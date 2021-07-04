@@ -1,14 +1,10 @@
 ---
-title: About Hagura
+title: About Oitee
 layout: post
 permalink: /about/
 published: true
 ---
 
-For more themes please visit [https://jekyll-themes.com](https://jekyll-themes.com){: target="_blank"}
+I am a lawyer with three years’ of post-qualification experience. But I want to learn how to code.
 
-Does the theme deserve a star?
-
-<!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/sharu725/hagura" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star sharu725/hagura on GitHub">Star</a>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+To contact me, get in touch [here](mailto:oitee.codes@gmail.com)!
