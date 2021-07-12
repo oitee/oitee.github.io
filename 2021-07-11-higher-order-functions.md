@@ -3,7 +3,7 @@ layout: post
 title: Defining functions
 ---
 
-In this post, I explore the various ways of defining functions in Javascript. But before that, I also attempt to understand the very nature and utility of functions in a program.
+In this post, I expolore the ways of defining functions in javascript. But before that, I also attempt to understand the very nature and utility of functions in a program.
 
 ## What are functions?
 
@@ -24,7 +24,7 @@ noReturn();
 
 ### What is so special about functions?
 
-What is the point of having functions? Functions can be very useful, when the same task or operation needs to be performed multiple times in the same program. Thus, in the following code, the function `average()`, can be called as many times as may be required, and it will always return the average of the three parameters passed to it.
+Functions are like chunks of code, within a program. What is the point of having functions? Functions can be very useful, when the same task or operation needs to be performed multiple times in the same program. Thus, in the following code, the function `average()`, can be called as many times as may be required, and it will always return the average of the three parameters passed to it.
 
 ```js
 function average(a, b, c) {
@@ -33,7 +33,7 @@ function average(a, b, c) {
 console.log(average(1, 2, 4)); // output: 2.3333333333333335
 ```
 
-Apart from their ability of being re-used _ad infinitum_, functions can _encapsulate_ a specific task or operation. Thus, a complex program can be divided into specific sub-programs, each of which can be neatly encapsulated within a separate function. For example, if we need to write a program to find the average of all the elements of an array, as well as its largest and smallest elements, we can write three specific functions for each of these tasks, as shown below.
+Apart from their ability of being re-used _ad infinitum_, functions can _encapsulate_ a specific task or operation. Thus, a complex program can be divided into specific sub-programs, each of which can be neatly encapsulated within a separate function. Thus, for example, if we need to write a program to find the average of all the elements of an array, as well as its largest and smallest elements, we can write three specific functions for each of these tasks, as shown below.
 
 ```js
 function mean(data) {
@@ -62,14 +62,26 @@ function smallestElement(data) {
   return smallest;
 }
 let sampleData = [1, 3, 5, 7, 9];
-console.log("The array: " + sampleData + " has " + sampleData.length + " elements. The average of these elements is " + mean(sampleData) + " with " + greatestElement(sampleData) + " being the largest element and " + smallestElement(sampleData) + " being the smallest element");
+console.log(
+  "The array: " +
+    sampleData +
+    " has " +
+    sampleData.length +
+    " elements. The average of these elements is " +
+    mean(sampleData) +
+    " with " +
+    greatestElement(sampleData) +
+    " being the largest element and " +
+    smallestElement(sampleData) +
+    " being the smallest element"
+);
 ```
 
 Output:
 
     The array: 1,3,5,7,9 has 5 elements. The average of these elements is 6.25 with 9 being the largest element and 1 being the smallest element
 
-Thus, when the complexity of programs increase, it is highly useful to use functions to do specific operations. We do not have to spend time and energy to visualise the code that is written within a function, every time we have to call it. What is important, instead, is the operation that function undertakes. As long as the operation encapsulated within a function is clear, it can be relied upon whenever that operation needs to be executed, without having to bother about _how that operation is indeed being executed_. This is called ‘abstraction’, and it helps in simplifying complex programs.
+Thus, when the complexity of programs increase, it is highly useful to use functions to do specific operations. We need not spend time and energy to visualise the code that is written within a function, every time we have to call it. What is important, instead, is the operation, that function undertakes. As long as the operation encapsulated within a function is clear, it can be relied upon whenever that operation needs to be executed, without having to bother about _how that operation is indeed being executed_. This is called ‘abstraction’, and it helps in simplifying complex programs.
 
 ## Defining functions
 
@@ -77,7 +89,7 @@ There are two ways to define a function using the keyword `function`. _First_, a
 
     function name (parameter1, parameter2, ... parameterN){ ... }
 
-_Second_, functions can be defined as a part of a larger statement or operation. One of the ways of defining functions using function expressions is as follows:
+_Second_, functions can be defined as a part of a larger statement of operation. One of the ways of defining functions using function expressions is as follows:
 
     const function(parameter1, parameter2... parameterN) { ... };
 
@@ -86,10 +98,9 @@ _Second_, functions can be defined as a part of a larger statement or operation.
 a) _Naming:_ Just as an identifier (or a name) is essential while declaring a variable, it is equally essential to name a function while declaring it. The name will act as a variable, storing the function itself.
 
 ```js
-//Declaring a function with the name sum' 
 function sum(a, b) {
   return a + b;
-} 
+} //Function declaration; 'sum' is the name of the function
 console.log(typeof sum); //output: function
 ```
 
@@ -103,12 +114,10 @@ const ADD = function (a, b) {
 }; // function expression, containing an anonymous function
 ```
 
-Anonymous functions can also be [passed to other functions](https://oitee.github.io/2021/07/11/higher-order-functions.html) without first assigning them to a variable or a constant. 
-
-In the context of function expression, the name of the function is not accessible outside the scope of that function. In other words, that function cannot be called by invoking its name (unless its a recursive call). To call that function outside its scope, the variable storing that function will need to be called.
+In the context of function expression, the name of the function is wholly irreleveant _outside_ the scope of that function. In other words, if a named function is defined in a function expression, that name will be accessible only within that function (i.e., it will be a local variable). To call that function outside its scope, the variable storing that function will need to be called.
 
 ```js
-const f = function factorial(n) {
+let f = function factorial(n) {
   if (n == 1) {
     return n;
   }
@@ -131,7 +140,7 @@ However, function expressions cannot be hoisted. Thus, the following program wil
 
 ```js
 console.log(sum(1, 3));
-const sum = function (n, m) {
+var sum = function (n, m) {
   return n + m;
 };
 ```
@@ -140,55 +149,63 @@ const sum = function (n, m) {
 
 There is a third way to define functions: using a specific syntax that was introduced in ES6, called _arrow functions_. It is, in fact, a concise way to define a function expression. Thus, naming is not mandatory (as discussed above). The `function` keyword is not required either. Further, it is not mandatory to write `return`, if the body of the function contains only one line of code. The body of the function is separated from the parameters by an arrow (=>) and hence the name _arrow functions_.
 
-The manner of defining arrow functions depends on the nature of the function expression itself, as elaborated below.
+The manner of defining arrow functions depends on the nature of the function expression itself, as elaborated below:
 
-Functions without a parameter and with a single statement or expression, can be expressed in the following manner:
+#### Functions without a parameter and with a single statement or expression:
 
     Syntax: () => expression;
 
-For example:
+_Function Expression:_
 
 ```js
-// regular function expression:
-const myFunc = function () {
+let myFunc = function () {
   return true;
 };
-
-// using arrow Function:
-const myFunc1 = () => true;
 ```
 
-Functions with a single parameter and a single statement or expression can be expressed in the following manner:
+_Arrow Function:_
+
+```js
+let myFunc = () => true;
+```
+
+#### Functions with a single parameter and a single statement or expression:
 
     Syntax: parameter => expression;
 
-For example:
+_Function expression:_
 
 ```js
-// regular function expression:
-const myFunc = function (a) {
+let myFunc = function (a) {
   return (a += 1);
 };
-//using arrow function:
-const myFunc1 = (a) => (a += 1); /*no need to write the return keyword*/
 ```
 
-Functions with multiple parameters and single statement or expression can be expressed in the following manner:
+_Arrow function:_
+
+```js
+let myFunc = (a) => (a += 1); /*no need to write the return keyword*/
+```
+
+#### Functions with multiple parameters and single statement or expression:
 
     Syntax: (parameter1, parameter2,...parameterN) => expression;
 
-For example:
+_Function expression:_
 
 ```js
-//regular function expression:
-const myFunc = function (a, b) {
+let myFunc = function (a, b) {
   return (a = a + b);
 };
-//using arrow function:
-const myFunc = (a, b) => a + b; // parameters to be written within parenthesis
 ```
 
-Functions with multiple parameters and multiple statements and/or expressions can be expressed in the following manner:
+_Arrow function:_
+
+```js
+let myFunc = (a, b) => a + b; // parameters to be written within parenthesis
+```
+
+#### Functions with multiple parameters and multiple statements and/or expressions
 
     Syntax: (param1, param2,...paramN) => {
       expression1;
@@ -197,19 +214,10 @@ Functions with multiple parameters and multiple statements and/or expressions ca
       expressionN;
     }
 
-For example: 
+_Function expression:_
 
 ```js
-//regular function expression:
-const newFunc = function (a, b) {
-  let c = a - b;
-  if (c < 0) {
-    return b + " is greater than " + a;
-  }
-  return b + "either equal to or less than " + a;
-};
-// using arrow function:
-const newFunc = (a, b) => {
+let newFunc = function (a, b) {
   let c = a - b;
   if (c < 0) {
     return b + " is greater than " + a;
@@ -218,6 +226,14 @@ const newFunc = (a, b) => {
 };
 ```
 
+_Arrow function:_
 
-
-
+```js
+let newFunc = (a, b) => {
+  let c = a - b;
+  if (c < 0) {
+    return b + " is greater than " + a;
+  }
+  return b + "either equal to or less than " + a;
+};
+```
