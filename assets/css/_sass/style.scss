@@ -47,7 +47,10 @@ a {
     }
 }
 
-
+p {
+    margin: 0;
+    margin-bottom: 1em;
+}
 
 p a {
     color: $text-color;
@@ -105,6 +108,11 @@ blockquote {
     }
 
 
+.headline{
+    border-top:3px solid; 
+    border-bottom:3px solid; 
+    text-align: center;
+}
 
 .headline, .post-headline {
     font-size: 3em;
