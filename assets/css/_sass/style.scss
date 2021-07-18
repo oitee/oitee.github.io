@@ -21,15 +21,21 @@ body {
     }
 
     h1,h2,h3,h4,h5,h6 {
-         font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
+         font-family: $heading-font-family;
          font-weight: bold;
          line-height: 1.8;
          margin: 0;
-         text-transform: capitalize;
          code, pre  {
             font-size: inherit;
             font-family: monospace;
         }
+    }
+    h1{
+        font-size: 1.5em;
+    }
+    
+    h2{
+        font-size: 40px;
     }
 
 
