@@ -107,7 +107,7 @@ blockquote {
 
 
 .headline, .post-headline {
-    font-size: 4em;
+    font-size: 3em;
     margin-bottom: 0.5em;
 
         @include media-query($on-palm) {
@@ -229,4 +229,9 @@ footer {
 /* Horizontal Divider */
 .divider {
     margin: 1em 0;
+}
+
+.postdate {
+   font-style: italic;
+    font-size: smaller;
 }
