@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Data-types in Javascript
+tags: programming
 ---
 
 In this post, I try to understand the broad differences between primitive data-types and objects in Javascript.  

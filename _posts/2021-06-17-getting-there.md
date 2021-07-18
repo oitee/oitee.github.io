@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Preparing to take-off
+tags: personal
 ---
 
 Now that Linux is ready, I needed to install VS Code so that I can save the programs I write in the days to come.

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Understanding Global and Local Variables
+tags: programming
 ---
 
 In this post, I will briefly analyse the manner and implications of declaring a variable as a local variable and a global variable.

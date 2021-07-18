@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Higher Order Functions
+tags: conceptual
 ---
 
 In this post, I explore the concept of higher-order functions and discuss three common examples of higher-order functions.

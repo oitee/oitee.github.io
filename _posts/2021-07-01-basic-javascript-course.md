@@ -1,6 +1,7 @@
 ---
 layout: post
 title: First Milestone
+tags: personal
 ---
 
 I spent the last fortnight to complete the [Basic JavaScript course](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures#basic-javascript) on *freeCodeCamp*. 

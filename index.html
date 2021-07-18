@@ -1,39 +1,47 @@
 ---
 layout: default
 ---
+
 <h1 class="headline">{{site.title}}</h1>
 <div class="article-list">
-  {% for post in paginator.posts %}
-    <h2><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
-    <p>{{post.excerpt | strip_html}}</p>
+  <h2>Conceptual</h2>
+  {% for post in site.posts %}
+  {% if post.tags contains 'conceptual' %}
+  <h3><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h3>
+  <p>{{post.excerpt | strip_html}}</p>
+  {% endif %} 
   {% endfor %}
+  
+  <h2>Programming</h2>
+  {% for post in site.posts %}
+  {% if post.tags contains 'programming' %}
+  <h3><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h3>
+  <p>{{post.excerpt | strip_html}}</p>
+  {% endif %} 
+  {% endfor %}
+  
+  
+  <h2>Personal</h2>
+  {% for post in site.posts %}
+  {% if post.tags contains 'personal' %}
+  <h3><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h3>
+  <p>{{post.excerpt | strip_html}}</p>
+  {% endif %} 
+  {% endfor %}
+
+  
+  <h2>Others</h2>
+  {% for post in site.posts %} 
+  {% unless post.tags contains 'personal' %}
+  {% unless post.tags contains 'programming' %}
+  {% unless post.tags contains 'conceptual' %}
+  <h3><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h3>
+  <p>{{post.excerpt | strip_html}}</p>
+  {% endunless %}
+  {% endunless %}
+  {% endunless %} 
+  {% endfor %}
+
 </div>
 
 
-
-<!-- pagination -->
-{% if paginator.total_pages > 1 %}
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-  {% else %}
-    <span>&laquo; Prev</span>
-  {% endif %}
-
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <span class="webjeda">{{ page }}</span>
-    {% elsif page == 1 %}
-      <a href="{{site.baseurl}}/">{{ page }}</a>
-    {% else %}
-      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-    {% endif %}
-  {% endfor %}
-
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-  {% else %}
-    <span>Next &raquo;</span>
-  {% endif %}
-</div>
-{% endif %}

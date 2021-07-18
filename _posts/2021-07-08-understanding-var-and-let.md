@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Understanding var and let
+tags: programming
 ---
 
 The keywords `var` and `let` can both be used to declare variables. But are there any differences between the two?

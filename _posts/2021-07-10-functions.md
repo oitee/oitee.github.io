@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Defining functions
+tags: programming
 ---
 
 In this post, I explore the various ways of defining functions in Javascript. But before that, I also attempt to understand the very nature and utility of functions in a program.
