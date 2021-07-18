@@ -10,8 +10,6 @@ highlighter: rouge
 markdown: kramdown
 
 
-paginate: 4
-
 
 # Tracker
 analytics: G-MKY775HLH5
@@ -47,4 +45,3 @@ exclude:
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-paginate
