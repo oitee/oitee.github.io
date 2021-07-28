@@ -18,10 +18,9 @@ Unfortunately, there is no silver bullet when it comes to data structures: we ca
 
 Two of the simplest types of data structures are arrays and linked lists. An array is a contiguously structured list of values. Conceptually, an array is a collection of sequentially arranged data values, that are placed on a specific range of indices or positions. Although conceptually, the starting index of an array can be any random integer (or even a string!), in most programming languages, including JavaScript, arrays start from the index of 0 and proceeds incrementally. Unlike most other kinds of data structures, an array comes built-in with JavaScript (and most other programming languages). So, we do not have to write constructors for arrays. Typically, arrays also have a fixed size  (as discussed below) and their contents can be accessed by referring to their position or *index* within the array. 
 
-
 Linked lists are also linearly arranged data structures. However, linked lists are not contiguously arranged; instead, each unit, called a 'node', is connected to another unit, by way of *pointers*. A node of a linked list may be placed anywhere in the memory, but each node will point to the next node and that node will point to the node thereafter and so on. By way of analogy, the pages containing search results of a search engine act like a linked list: the user can only go to either the next or the previous page from a specific page. 
 
-Unlike arrays, linked lists need to created from scratch before using them. This gives us freedom to design various kinds of linked lists. A linked list in which each node carries a pointer to only the next or the previous node in the list, is called a singly-linked list. Most commonly, singly linked-lists (also called chains) will start with a head node, with each node pointing to the next node, and the last node pointing to `null`. 
+As linked lists can be created from scratch, it gives us freedom to design various kinds of linked lists. A linked list in which each node carries a pointer to only the next or the previous node in the list, is called a singly-linked list. Most commonly, singly linked-lists (also called chains) will start with a head node, with each node pointing to the next node, and the last node pointing to `null`. 
 
 ![Singly linked list](/assets/images/singlyLinkedList.jpg)
 
