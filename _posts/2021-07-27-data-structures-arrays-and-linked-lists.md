@@ -78,4 +78,4 @@ From the above discussion, the following can be inferred:
 - Linked lists take up greater space per unit than arrays, (as they have to store one or more pointers)
 - It is relatively less burdensome to insert and delete data from a linked list than in an array.
 
-In the next post, I will discuss how to create linked-lists in JavaScript.
+In the [next post](/2021/07/28/linked-lists-in-javascript.html), I will discuss how to create linked-lists in JavaScript.
