@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Linked Lists in JavaScript
+title: Implementing Linked Lists
 tags: programming
 ---
 
@@ -19,7 +19,7 @@ function Node(data){
 }
 ```
 
-When a new node is created by the constructor function, its `.next` property will point to `null`. So, each time a subsequent node is created within a linked list, it is important link the `.next` property of the previous node to that new node. 
+When a new node is created by the constructor function, its `next` property will point to `null`. So, each time a subsequent node is created within a linked list, it is important to link the `next` property of the previous node to that new node. 
 
 ```js
 let head = new Node(7);//head node
@@ -28,15 +28,14 @@ head.next.next = new Node(9);// third node
 head.next.next.next = new Node(10);// fourth node
 ```
 
-## Converting an array to a linked list
+## Constructing a linked list from an array
 
 While it is possible to create new nodes by manually linking them to the previous node's `.next` property, it is also possible to do this iteratively. For example, given an array, it is possible to create a linked list using a `for loop` and a temporary variable (say `tail`). During each iteration of the loop, `tail` can be used to point to the last node that was created in the linked list, and `tail.next` can be used to create the next new node in the list. Once the new node is created, `tail` should point to that node: `tail = tail.next`. This will be repeated for each element of the array. However, it is important to store the location of the first node, as a linked list is identified by its head node. Thus, we must create the head node outside the loop, and assign it to the `tail` variable, which can, then, be used to create the subsequent nodes in the list. 
 
-Note that, we can use loops to change the `.next` properties of every node (which is, in fact, an object) by using the same variable (`tail`, in this example) because variables act as [mere identifiers to objects](/2021/07/09/understanding-const.html), instead of storing objects themselves.   
+Note that, we can use loops to change the `.next` properties of every node (which is, in fact, an object) by using the same variable (`tail`, in this example) because variables [are just names or identifiers to actual objects](/2021/07/09/understanding-const.html). Multiple variables can 'point' or 'refer' to the same object and each of them can be used to modify the properties of the object. Hence, we can use any variable (such as `tail`), to change multiple nodes in a linked list.   
 
 ```js
 function arrayToLinkedList(arr) {
-   //for the head node
   let head = new Node(arr[0]);
   let tail = head;
 
@@ -63,14 +62,14 @@ function search(list, x) {
   }
   return;
 }
-//calling search() by passing the head node of the linked list created in the first example
+//calling search by passing the head node of the linked list created in the first example
 console.log(search(head, 9)); //Node { data: 9, next: Node { data: 10, next: null } }
 console.log(search(head, 11)); // undefined
 ```
 
 ## Inserting a new node
 
-As discussed in the [previous post](/2021/07/27/data-structures-arrays-and-linked-lists.html), if we are at liberty to insert a new node anywhere in a linked list, we can simply add a new node at the beginning of the linked list:
+As discussed in the [previous post](/2021/07/27/data-structures-arrays-and-linked-lists.html), we can simply add a new node at the beginning of the linked list:
 
 ```js
 function insertAnyWhere(list, data){
@@ -87,7 +86,7 @@ It is also possible to insert a new node at a specific location within a linked 
 ```js
 function insertAfter(list, data, newData) {
   let newNode = new Node(newData);
-  //calling the search() function, to find out the node carrying 'data'
+  //calling the search function, to find out the node carrying 'data'
   let targetNode = search(list, data);
   // returning an appropriate message if 'data' does not exist within 'list'
   if (targetNode == undefined) {
@@ -155,7 +154,7 @@ newNode.next = previous.next;
 
 ## Deleting a node
 
-To delete a node carrying a specific value, we can rely on `search()` to find that node, and `searchPrevious()` to find the node immediately prior to that node. We can then, link the *(n-1)*th node to the *(n+1)*th node.  
+To delete a node carrying a specific value, we can rely on `search()` to find that node, and `searchPrevious()` to find the node immediately prior to that node. We can then link the *(n-1)*th node to the *(n+1)*th node.  
 
 ```js
 function deletion(list, x){

@@ -8,7 +8,13 @@ Stack is a common data structure that is often used to retrieve and insert data 
 
 ## What are stacks?
 
-Stacks are containers of data items, where the data items are arranged and retrieved as per the last-in-first-out (LIFO) order. This means that the last item added to the data structure will be the first item that can be accessed. This kind of data structure is modelled after a real-world _stack_ of plates in a kitchen sink. It can also be thought of a jar of biscuits, where one can only reach the first item before moving onto the next one. LIFO has many practical applications. For example, the undo-operation (ctrl + z) that is available in various computer programs, follow the LIFO principle, as we always need to access the last change carried out. [Brackets are opened and closed](/2021/07/25/valid-parenthesis.html) as per this order as well. Also, recursive algorithms will always be arranged in this order.
+Stacks are data-structures, where the data items are arranged and retrieved as per the last-in-first-out (LIFO) order. **This means that the last item added to the data structure will be the first item that can be accessed.** This kind of data structure is modelled after a real-world _stack_ of plates in a kitchen sink. It can also be thought of as a jar of biscuits, where one can only reach the first item before moving onto the next one. 
+
+LIFO has many practical applications. For example, **the undo-operation (ctrl + z) that is available in various computer programs, follow the LIFO principle**, as we always need to access the last change carried out. [Brackets are opened and closed](/2021/07/25/valid-parenthesis.html) as per this order as well. 
+
+Also, function calls are internally maintained as a stack by the computer. If we have three functions f, g and h and they are interwoven in their calls, i.e., f(g(h(x, y))), then the function f cannot be called until the function g has finished and returned, which cannot be called until h has finished and returned. Function h is the last function that was called and is the first that must be finished.
+
+#### Common operations
 
 Some of the common operations involving stack are as follows:
 
@@ -22,19 +28,19 @@ Some of the common operations involving stack are as follows:
 
 ![pop and push operations](/assets/images/stackPushPop.jpg)
 
-## Implementing Stacks
+## Implementation
 
-To create a stack data structure, we need to first write an appropriate constructor function. Much like how linked lists are created, each new stack data structure can be created by invoking this constructor function along with the `new` function.
+To create a stack, we need to first write an appropriate constructor function. Much like how linked lists are created, each new stack data structure can be created by invoking this constructor function along with the `new` function.
 
 ### Designing the constructor function
 
-The constructor function will essentially create objects carrying certain common properties. Recall that, the [concept of class-based objects](/2021/07/19/creating-objects-in-javascript.html) can be incorporated in JavaScript, by using constructor functions, which can set the common properties which each constituent object will possess.
+The constructor function will essentially create objects carrying certain common properties. Recall that, the [concept of class-based objects](/2021/07/19/creating-objects-in-javascript.html) can be incorporated in JavaScript, by using constructor functions, which can set the common properties which each object will possess.
 
-Now, we know that we need to be able to insert and delete items as per the LIFO order. To do this, we will need to write functions that can carry out the aforesaid `push` and `pop` operations effectively. As these functions will be integral to this data structure, they will need to be available to every object created by the constructor function. Thus, the constructor will create these functions as properties for each object it creates. When functions sit inside an object (as a properties of that object), they are called 'methods'.
+Now, we know that we need to be able to insert and delete items as per the LIFO order. To do this, we will need to write functions that can carry out the aforesaid `push` and `pop` operations effectively. As these functions will be integral to this data structure, they will need to be available to every object created by the constructor function. Thus, the constructor will create these functions as properties for each object it creates. When functions sit inside an object (as properties of that object), they are called 'methods'.
 
 Apart from creating methods, the constructor will also need to provide a space to store the data items, which the requisite methods can access. To this end, we can either rely on arrays or linked lists.
 
-Thus, from the above discussion, it is clear that to implement a stack data structure, we need to write a constructor function, which will have two components: a) a set of methods, that carry out the requite operations associated with stacks, and b) a container for holding the data items to be stored inside a stack.
+Thus, from the above discussion, it is clear that to implement a stack data structure, we need to write a constructor function, which will have two components: a) a set of methods, that carry out the requisite operations associated with stacks, and b) a container for holding the data items to be stored inside a stack.
 
 Thus, the constructor function, that relies on linked lists, would look something like this:
 
@@ -54,7 +60,7 @@ let newStack = new Stack();// creates a new stack data structure by invoking Sta
 Similarly, the constructor function, that relies on arrays, will look something like this:
 
 ```js
-function StackUsingArray(){
+function Stack(){
 this.arr = [];//for storing the data items
 this.index = -1; //for storing the index of the top-most item
 this.isEmpty = function() {...};
@@ -97,7 +103,7 @@ This method will accept a data item as an argument and will push that item into 
 
 _For stacks built using linked lists:_
 
-When a new item is to be pushed, a new node (carrying that item) should inserted into the linked list. As shown in [my earlier post](/2021/07/28/linked-lists-in-javascript.html), the new node can be inserted at the head of the linked list.
+When a new item is to be pushed, a new node (carrying that item) should be inserted into the linked list. As shown in [my earlier post](/2021/07/28/linked-lists-in-javascript.html), the new node can be inserted at the head of the linked list.
 
 ```js
 this.push = function (x) {
@@ -114,7 +120,7 @@ this.push = function (x) {
 
 _For stacks built using arrays:_
 
-In this case, we need to insert the new item at `this.index +1` of `this.arr`, i.e., the index right after the index of the last inserted item. Note that, while working with strongly-typed programming languages, we should first check if adding a new item to this array would exceed the capacity that was initially allocated for that array. However, this is not necessary in JavaScript.
+In this case, we need to insert the new item at `this.index +1` of `this.arr`, i.e., the index right after the index of the last inserted item. Note that, while working with some programming languages such as C and Java, where arrays are of fixed capacity, we should first check if adding a new item to the array would exceed the capacity that was initially allocated for that array. However, this is not necessary in JavaScript, as arrays are always dynamically resized.
 
 ```js
 this.push = function (x) {
