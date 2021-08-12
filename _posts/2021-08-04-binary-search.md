@@ -4,11 +4,11 @@ title: Implementing Binary Search
 tags: programming
 ---
 
-In this post, I write about how I solved a [LeetCode problem](https://leetcode.com/problems/search-insert-position/), that required usage implementation of binary search in a sorted array.
+In this post, I write about how I solved a [LeetCode problem](https://leetcode.com/problems/search-insert-position/) that required implementation of binary search in a sorted array.
 
 ## The problem
 
-Given a sorted array `nums` containing integers and an a `target` integer, return the index of the `target` in the array `nums`. If `target` is not part of the array, return the index in the array where `target` should be inserted. 
+Given a sorted array `nums` containing integers and a `target` integer, return the index of the `target` in the array `nums`. If `target` is not part of the array, return the index in the array where `target` should be inserted. 
 
     Input: nums: [1, 3, 5, 7, 9] and target: 7
     Output: 3
@@ -26,15 +26,17 @@ Given a sorted array `nums` containing integers and an a `target` integer, retur
 
 ## What does O(log n) mean?
 
-`O(log n)` refers to the Big-Oh notation. Simply put, the Big-Oh notation is used to represent the relationship between the *size of the input* and the *amount of time an algorithm will take* to be executed. In other words, *"[How does the number of steps change as the input data elements increase?](https://towardsdatascience.com/the-big-o-notation-d35d52f38134)".* 
+`O(log n)` refers to the Big-O notation. Simply put, the Big-O notation is used to loosely represent the relationship between the *size of the input* and the *amount of time an algorithm will take* to be executed. In other words, *"[How does the number of steps change as the input data elements increase?](https://towardsdatascience.com/the-big-o-notation-d35d52f38134)".* 
 
-Algorithms can have a simple and direct relationship with the input data-set: when the size of inputs increases by *n*, the number of operations increase by *n* (or, by *c*n*, where c is a constant)*.* Such algorithms have a Big-Oh of n, represented as O(n). 
+Algorithms can have a simple and direct relationship with the input data-set: when the size of inputs increases by *n*, the number of operations increases by *n* (or, by _c*n_, where _c_ is a constant). In other words, the computational time taken by such algorithms will grow proportionally to the size of the input. Such algorithms have a Big-O of n, represented as O(n). 
 
-The number of operations to be executed in an algorithm can also be independent of the size of the input data-set (e.g. finding the *i*th element in an array). Such algorithms have O(1), i.e., the run-time of the algorithm will be constant, and not be dependent on the input-size. (As this post is not on Big-Oh notation, I will reserve the discussion on Big-Oh for another post).   
+The number of operations to be executed in an algorithm can also be independent of the size of the input data-set (e.g. finding the *i*th element in an array). Such algorithms have O(1), i.e., the run-time of the algorithm will be constant, and not be dependent on the input-size. (As this post is not on Big-O notation, I will reserve the discussion on Big-O for another post).   
 
 When an algorithm is said to have a O(log n), it means that the *rate at which* new operations (or steps) have to be carried out is a *fraction of the rate at which new inputs are added.* In other words, where, the input size increases by four times, but  the number of additional operations only increases by two times, the algorithm will have a logarithmic time-complexity, or a O(log n).  
 
-Contrast this with algorithms with O(n), where for each increment in the input size, there is an equivalent increase in the number of operations. Or, take the case of algorithms with exponential time-complexity, which have a multiplier effect (like the rate of spread of a viral pandemic), where for *n* new inputs, there are *c^n* new operations (where, *c* is a constant that is greater than 1). As we have seen in the case of the global pandemic, exponential functions *grow scarily fast*. Logarithmic functions, on the other hand, can be described as inverse-exponential functions: for every *n*  new inputs, the new operations increase by *c^ (1/n)*. Thus, logarithmic functions grow at a *very gradual pace*. 
+Contrast this with algorithms with O(n), where for each increment in the input size, there is an equivalent increase in the number of operations. Or, take the case of algorithms with exponential time-complexity, which have a multiplier effect (like the rate of spread of a viral pandemic), where for *n* new inputs, there are *c^n* new operations (where, *c* is a constant that is greater than 1). In other words, for every increment of the input size, there is a greater corresponding increase in the time-complexity of the algorithm. As we have seen in the case of the global pandemic, exponential functions *grow scarily fast*. Logarithmic functions, on the other hand, can be described as inverse-exponential functions: for every *n*  new inputs, there are less than *n* new set of operations. Thus, logarithmic functions grow at a *very gradual pace*. To illustrate this, in the following graph, the <span style="color: blue;"> **blue** </span> curve represents an **exponential** function (y = 2^x), the <span style="color: green;"> **green** </span> curve represents a **linear** function (y = x) and the <span style="color: red;"> **red** </span>  curve represents a **logarithmic** function (y = log<sub>2</sub> n).
+
+![Exponential, linear and logarithmic functions](/assets/images/exponential_linear_logarithmic.png)
 
 ## Relevance of O(log n) in the current problem
 
@@ -56,7 +58,7 @@ function searchAndInsert(nums, target) {
 }
 ```
 
-However, this will have a O(n). Note that, the Big-Oh notation always looks at the worst-case scenario. Thus, in the above example, when the target is the last element in the array, the `for-loop` will run for the entire length of `num`. So, the number of operations is directly proportional to the input-size.
+However, this will have a time-complexity of O(n). Note that, the Big-O notation always depicts the worst-case scenario. Thus, in the above example, when the target is the last element in the array, the `for-loop` will run for the entire length of `num`. So, the number of operations is directly proportional to the input-size.
 
 To do the same task, but with significantly fewer operations in relation to the size of the input, we cannot simply iterate through the entire array and compare each element of the array with the target value. To carry out a search that has O(log n), we will need to implement a *binary search.*  
 
@@ -64,7 +66,7 @@ To do the same task, but with significantly fewer operations in relation to the 
 
 #### What is it?
 
-In a binary search, we start with the mid-point of the data-set (which is sorted in an ascending order). If the element in the middle of the data-set is the target value, we return the index of the middle element. Else, we see if the target value is greater than or less than the value of the element in the middle. This will tell us in which half of the data-set, the target will lie. If the element in the middle of the data-set is *smaller* than the target, it means that target will be in the latter half (as all the elements from the 0th index till the mid-point will be smaller than the target). If the element in the middle of the data-set is *greater*  than the target, it will mean that the target will be in the first-half of the data-set (i.e., between the 0th position and the mid-point).
+In a binary search, we start with the mid-point of the data-set (which is sorted in an ascending order). If the element in the middle of the data-set is the target value, we return the index of the middle element. Otherwise, we see if the target value is greater than or less than the value of the element in the middle. This will tell us in which half of the data-set, the target will lie. If the element in the middle of the data-set is *smaller* than the target, it means that target will be in the latter half (as all the elements from the 0th index till the mid-point will be smaller than the target). If the element in the middle of the data-set is *greater*  than the target, it will mean that the target will be in the first-half of the data-set (i.e., between the 0th position and the mid-point).
 
 During each iteration of a binary search, we divide the data-set into two halves, and then divide one of the halves into two further halves. The selection of the halves are determined by comparing the element in the middle with the target. This continues, till we reach the target, or when we are left with an empty data-set. 
 
@@ -103,11 +105,13 @@ There are two important points to note:
 
 #### Does binary search have an O(log n)?
 
-While running a binary search, at each iteration, the size of the data-set shrinks by half. Assuming the worst-case scenario (i.e., when the target value is in at the index when `low==high` is true, i.e., when the resultant data-set will be containing only one element), the series of operations can be expressed as follows:
+While running a binary search, at each iteration, the size of the data-set shrinks by half. Assuming the worst-case scenario (i.e., when the target value is in at the index when `low==high` is true, i.e., when the data-set will be containing only one element), the number of elements remaining to be checked changes (at each iteration) as shown below:
 
 ![n —> n/2 —> n/8—> n/16...n/n](/assets/images/binarysearch_1.jpg)
 
-This can be expressed in the following manner as well:
+First, we have n elements to check, then by looking at the middle element of the sorted array, we throw away half the array. Now, in the selected half, we have n/2 elements, which again is halved. This continues until we have only one element remaining to be checked.
+
+The above expression can be expressed in the following manner as well:
 
 ![n —> n/2^1 —> n/2^2 —> n/2^3.... n/2^x](/assets/images/binarysearch_2.jpg)
 
@@ -119,7 +123,7 @@ By definition, this can be expressed as:
 
 ![x = log2 n](/assets/images/binarysearch_4.jpg)
 
-Since *x* represents the number of operations, the Big-Oh of a binary search would be: O(log n).
+Since *x* represents the number of operations, the Big-O of a binary search would be: O(log n). Thus, if there were 1024 elements in an array, a linear search would require (at-most) 1024 operations to find a specific element. A binary search, on the other hand, would require only 10 steps (as log<sub>2</sub> 1024  = 10).
 
 ## Implementing binary search and replace
 
@@ -141,11 +145,9 @@ function binarySearch(nums, target) {
     if (nums[mid] == target) {
       return mid;
     }
-    //if target is greater than nums[mid], the next iteration should look at nums[mid + 1] to nums[high]
     if(target > nums[mid]){
         low = mid + 1;
     }
-    //if target is less than nums[mid], the next iteration should look at nums[low] to nums[mid - 1]
     else{
         high = mid - 1;
     }

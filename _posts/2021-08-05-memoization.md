@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Memoization
-tags: programming
+title: Memoization by Way of Functional Programming
+tags: conceptual
 ---
 
-In this post, I explore the concept of memoization and show how it can be a useful technique when dealing with functions that need to be called multiple times in a program. 
+In this post, I explore the concept of memoization and show how it can be a useful technique when dealing with computationally intensive functions that need to be called multiple times in a program. 
 
 ## What is Memoization?
 
-It is an optimisation technique to store the return values of previous function calls. This technique builds a dictionary of the values returned by a particular function each time it is called. When the same function is called with the same argument(s) more than once, the function simply relies on the dictionary (called a 'memo'), and returns the corresponding value stored from the previous call, instead of executing the function for a second time. Memoisation can be very useful when calling the same function multiple times slows down the program.
+It is an optimisation technique to store the return values of previous calls to the same function. This technique remembers previous values returned by building a dictionary of the values returned by a particular function each time it is called. When the same function is called with the same argument(s) more than once, the function simply relies on the dictionary (called a 'memo'), and returns the corresponding value stored from the previous call, instead of executing the function for a second time. Memoization can be very useful when calling the same function multiple times slows down the program.
 
 #### Memoizing a one-argument function
 
@@ -76,7 +76,7 @@ console.log(memoizedOneArgRandom(2)); //2.2444724212882425
 console.log(memoizedOneArgRandom(2)); //2.2444724212882425
 ```
 
-However, in terms of use-case of memoisation, it should only be used for pure functions, i.e., functions which will always return the same values for the same inputs, irrespective of the number of times it is called. `oneArgRandom` is not a pure function, as it is expected to return different values each time it is called. So, this function is not a fit-case for memoisation; nevertheless, this example was used to show that our memoization technique is working.
+However, in terms of use-case of memoization, it should only be used for pure functions, i.e., functions which will always return the same values for the same inputs, irrespective of the number of times it is called. `oneArgRandom` is not a pure function, as it is expected to return different values each time it is called. So, this function is not a fit-case for memoization; nevertheless, this example was used to show that our memoization technique is working.
 
 #### Memoizing a two-argument function
 
@@ -144,7 +144,7 @@ function fibonacci(n) {
 let memoizedFibo = memoize(fibonacci);
 ```
 
-In the above example, which returns the *n*th fibonacci value, the `memoizedFibo` will check the properties of `memo` only once: that is, when the `fibonacci` is being called with `n` as a parameter. But the return values of each recursive call happening inside `fibonacci` is neither being stored in `memo` nor is `memo` being checked before executing each recursive call. For example, if we pass `50` to `memoizedFibo`, it will first check whether `memo` contains `'50'` as a property. If not, it will directly call the passed function, `fibonacci`. Now, `fibonacci` will recursively call itself for all values from 0 till (n-1) multiple times, to arrive at the 50th fibonacci number. But the return values of these recursive calls will never be saved in the `memo`. (This is why, if we pass `50` to `memoizedFibo`, the computer will not be able generate a value within reasonable time, as the number of repeated recursive calls will be extremely high).
+In the above example, which returns the *n*th fibonacci value, the `memoizedFibo` will check the properties of `memo` only once: that is, when the `fibonacci` is being called with `n` as a parameter. But the return values of each recursive call happening inside `fibonacci` is neither being stored in `memo` nor is `memo` being checked before executing each recursive call. For example, if we pass `50` to `memoizedFibo`, it will first check whether `memo` contains `'50'` as a property. If not, it will directly call the passed function, `fibonacci`. Now, `fibonacci` will recursively call itself for all values from 0 till (n-1) multiple times, to arrive at the 50th fibonacci number. But the return values of these recursive calls will never be saved in the `memo`. (This is why, if we pass `50` to `memoizedFibo`, the function will not finish computing within a reasonable time-period, as the number of repeated recursive calls will be extremely high).
 
 To solve this, we need to ensure that during each recursive call, the function first checks the `memo` object. This is possible, if, **instead of calling the original function, the function recursively calls the memoized version of itself**.
 
@@ -161,6 +161,6 @@ console.log(memoizedFibo(50)); //output: 12586269025 [generated in 1.109 seconds
 
 ## Takeaway
 
-- Memoization is an efficient tool to save return values of functions, which can save time when the same function is expected to be called multiple times with the same set of arguments.
+- Memoization is an efficient tool to save return values of functions, which can save time when the same function is expected to be called multiple times with the same set of arguments. However, memoization will work only with pure functions. 
 
-- Memoization is a **practical implementation of functional programming:** we are passing functions as arguments to another function, and we are setting functions as return values of other functions. Thus, memoisation shows [how functions can be treated as first-class citizens in JavaScript.](https://oitee.github.io/2021/07/11/higher-order-functions.html)
+- Memoization is a **practical use-case of functional programming:** we are passing functions as arguments to another function, and we are setting functions as return values of other functions. Thus, memoization shows [how functions can be treated as first-class citizens in JavaScript.](https://oitee.github.io/2021/07/11/higher-order-functions.html)
