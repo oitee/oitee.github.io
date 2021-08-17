@@ -3,22 +3,26 @@ layout: post
 title: Implementing Graphs
 tags: programming
 ---
-A graph is an abstract data structure consisting of a set of vertices, each of which are connected to one or more other vertex. In this post, I explore this data-structure and implement some of its common operations.
+A graph is an data structure consisting of a set of vertices, each of which are connected to one or more other vertices. In this post, I explore this data structure and implement some of its common operations.
 
-## What is a graph?
+## What is a graph
+
+A graph is a data structure containing nodes or vertices which are optionally interlinked by edges or links. (In this post, the terms 'vertex' and 'node' will be used interchangeably. The terms 'edges' and 'links' will also be used interchangably). 
 
 Graphs are powerful because they can be used to represent *any* form of relationship. For example, graphs can be used to represent road-systems in a city and  relationships between different members on a social networking site.
 
 #### Graphs and trees
 
-Trees represent hierarchical relations. They will always have a root which may have one or more sub-trees. A tree is, in fact, a special kind of graph. A tree is graph without cycles. To put it in another way, in a graph, it is permissible to connect any vertex (irrespective of where they are) to any other vertex in the same graph. As there is no specific restriction or order in which vertices need to be connected to each other, there can be multiple paths (also called 'edges') between two given vertices. But, in the case of a tree, each node will have only one specific route to reach another.
+Trees represent hierarchical relations. They will always have a special node called root which may have one or more sub-trees. A tree is, in fact, a special kind of graph. A tree is graph without cycles. To put it in another way, in a graph, it is permissible to connect any vertex (irrespective of where they are) to any other vertex in the same graph. As there is no specific restriction or order in which vertices need to be connected to each other, there can be multiple paths (also called 'edges') between two given vertices. But, in the case of a tree, each node will have only one specific route to reach another.
 
 ![Image showing a graph with multiple paths](/assets/images/tree_and_graph.jpg)
  
 
 #### Directed and Undirected Graphs
 
-Graphs can be directed or undirected. In a directed graph, between two neighbours, only one will contain a pointer to the other. It is akin to a one-way street. But in an undirected graph, each neighbour will carry pointers to all of its neighbours. Thus, between two neighbouring vertices A and B, A will contain a pointer to B and B will contain a pointer to A.
+Graphs can be directed or undirected. In a directed graph, between two neighbours, only one will point to the other. But in an undirected graph, each neighbour will point to all of its neighbours. Thus, between two neighbouring vertices A and B, A will point to B and B will point to A.  
+
+In other words, the connection or edge between two vertices can either be symmetric or asymmetric. For example, when a member (say, X) follows another member (say Y) on Twitter, their relationship is assymetric: only one of them follws the other. However, when X and Y become friends on the Facebook, both of them will become friends of each other, thereby having a symmetric relationship.  
 
 A graph is called a connected graph, if every pair of vertices is connected to each other by at least one path. Directed graphs will always be connected graphs. An undirected graph, however, can be a disconnected graph if there exists at least one pair of vertices that do not share a path between them. 
 
