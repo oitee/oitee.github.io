@@ -22,11 +22,13 @@ Trees represent hierarchical relations. They will always have a special node cal
 
 Graphs can be directed or undirected. In a directed graph, between two neighbours, only one will point to the other. But in an undirected graph, each neighbour will point to all of its neighbours. Thus, between two neighbouring vertices A and B, A will point to B and B will point to A.  
 
-In other words, the connection or edge between two vertices can either be symmetric or asymmetric. For example, when a member (say, X) follows another member (say Y) on Twitter, their relationship is assymetric: only one of them follws the other. However, when X and Y become friends on the Facebook, both of them will become friends of each other, thereby having a symmetric relationship.  
+In other words, the connection or edge between two vertices can either be symmetric or asymmetric. For example, when a member (say, X) follows another member (say Y) on Twitter, their relationship is assymetric: only one of them follws the other. However, when X and Y become friends on the Facebook, both of them will become friends of each other, thereby having a symmetric relationship. 
+
+<img src="/assets/images/directed_and_undirected_graphs.jpg" width="60%">
 
 A graph is called a connected graph, if every pair of vertices is connected to each other by at least one path. Both directed and undirected graphs can be connected or disconnected.  Note that it is not necessary for a connected graph to have each of its pairs connected by a path of length 1. Pairs of vertices that are connected by a path of length one are called neighbours or adjacent vertices. 
 
-
+<img src="/assets/images/connected_and_unconnected_graphs.jpg" width="60%">
 
 ## Representing a graph
 
