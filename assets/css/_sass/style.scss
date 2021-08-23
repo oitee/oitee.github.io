@@ -40,6 +40,7 @@ body {
     }
 
 
+
 a {
     color: $brand-color;
     text-decoration: none;
@@ -110,8 +111,8 @@ blockquote {
 
 
 .headline{
-    border-top:3px solid; 
-    border-bottom:3px solid; 
+    //border-top:3px solid; 
+    //border-bottom:3px solid; 
     text-align: center;
 }
 
@@ -124,29 +125,63 @@ blockquote {
         }
     }
 
+.headertab{
+    width: 100%;
+    height: 80px;
+    display: block;
+    background-color: transparent;
+
+}
+.innerhead{
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    background-color: transparent;
+    border-bottom: 1px solid;
+}
+
+.brand{
+    height: 100%;
+    display: table;
+    float: left;
+}
+
+.brand a{
+    color: black;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: normal;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.navigation{
+    float: right;
+    height: 100%;
+    display: table;
+}
+
+.navigation a{
+    height: 100%;
+    display: table-cell;
+    float: right;
+    padding: 10px;
+}
+
+.navigation a li{
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    color:#828297;
+    font-family: $heading-font-family;
+    font-weight: bold;
+    
+}
 
 /* Home Button */
-.home {
-    background-image: url(../images/left-arrow.svg);
-    background-repeat: no-repeat;
-    height: 40px;
-    width: 40px;
-    opacity: 0.9;
-    position: fixed;
-    top: 50px;
-    left: 50px;
-    color: red;
-    &:hover{
-    opacity: 1;
-    }
-    @include media-query($on-laptop) {
-        top: 90%;
-        left: 90%;
-        height: 30px;
-        width: 30px;
-        opacity: 0.6;
-    }
-}
 
 
 
