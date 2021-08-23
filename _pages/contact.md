@@ -1,7 +1,8 @@
 ---
-title: Contact
+title: 
 layout: post
 permalink: /contact/
 ---
 
-To contact me, get in touch [here](mailto:oitee.codes@gmail.com)!
+To reach out to me, feel free to drop a mail at [contact@otee.dev](mailto:contact@otee.dev)! Here's my [Github profile](https://github.com/oitee).
+
