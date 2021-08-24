@@ -34,11 +34,7 @@ A **List** refers to each block or segment of an s-expression which is contained
 
 Here's a list of valid s-expressions:
 
-![Table of valid expressions](/assets/images/valid_expressions_crisp.png)
-
-
-
-
+<img src="/assets/images/valid_expressions_crisp.png" alt="Table of valid expressions" width="100%"/>
 
 ## Lisp
 
@@ -135,27 +131,26 @@ In this way, a **syntax tree** will be created incrementally and from bottom-up.
 
 First, the `*` operator will be pushed to the stack, along with the opening parenthesis `(`. Then, the following atoms will be pushed: `1` `(` `*` `5` and `6`. (For the sake of simplicity, the parentheses are not shown on the syntax tree).
 
-
-![Syntax Tree and stack 1](/assets/images/syntax_tree_stack_1.png)
+<img src="/assets/images/syntax_tree_stack_1.png" alt="Syntax Tree and stack 1" width="100%"/>
 
 
 Now that there is a `)`, it will signify the end of the current list. So, all the atoms of the present list will be popped, namely  `6` `5` `*` and `(`. In place of these atoms, the value of `(* 5 6)` will be pushed into the stack. The syntax tree would now look like this:
 
-![Syntax Tree and stack 2](/assets/images/syntax_tree_stack_2.png)
+<img src="/assets/images/syntax_tree_stack_2.png" alt="Syntax Tree and stack 2" width="100%"/>
 
 In a similar manner, the next set of atoms will be pushed, i.e., `(` `+` `7` `8` `9` will be pushed:
 
-![Syntax Tree and stack 3](/assets/images/syntax_tree_stack_3.png)
+<img src="/assets/images/syntax_tree_stack_3.png" alt="Syntax Tree and stack 3" width="100%"/>
 
 Again, the presence of `)` would signify the end of the current list. So, all the atoms of this list will be popped and their result will be pushed into the stack. Finally, the penultimate atom, `10` will be pushed and then all the remaining values in the stack will be passed to the multiplication operator along with `1`.
 
-![Syntax Tree and stack 4](/assets/images/syntax_tree_stack_4.png)
+<img src="/assets/images/syntax_tree_stack_4.png" alt="Syntax Tree and stack 4" width="100%"/>
 
 Now that there is no other element left in the expression, the return value of this function call will be the final output, i.e., `7200`.
 
 ### System Design
 
-![System Design](/assets/images/system_design_crisp.png)
+<img src="/assets/images/system_design_crisp.png" alt="System Design" width="100%"/>
 
 The project can be divided into three main components: 
 
