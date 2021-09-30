@@ -33,8 +33,6 @@ The simplest way to implement a key-value store is to **treat the index of an ar
 
 [Here](https://github.com/oitee/hash-browns/blob/main/key_value_array.js) is the complete implementation of a key-value store, using arrays. (In this implementation, there is an additional method called `convertToUnicode` that checks if a given key is a positive integer. If it is not, it converts the key to a string, and returns the cummulative uni-code values of its characters.)
 
-Here's an illustration of how the above set of operations can be used to maintain a key-value store called `phoneBook`:
-
 While the implementation of a key-value store using an array is trivial, the time-complexity for look-up is constant, i.e., O(1). This is because of the property of arrays providing an O(1) for random access. However, it is significant to note that if we create a key-value store (`phoneBook`) for storing phone-numbers of persons, such that the first name of the contact acts as the key (which will first need to be appropriately converted into a positive natural number), the store will likely have a very **large number of empty elements**. To illustrate this, let's use the `phoneBook` to store the phone numbers for two contacts, namely `Bella` ('+ 91 2441139') and `Emergency` ('100'). It will first convert the names of the contacts to positive natural numbers by, say, taking the sum of the uni-code values of each character of the strings. `Bella` will be converted to `480` and `Emergency` will be converted to `927`. In order to store these two keys, the size of the array will be `928`. In fact, if we print the contents of the array implementing the `phoneBook`, the output will be:
 
 ```js
@@ -126,7 +124,7 @@ class HashTable {
   }
 ```
 
-#### Insertion:
+#### Insertion
 
 As discussed above, each key-value pair should be inserted in the index corresponding to the hash-value of the key. Thus, before carrying out the insertion, it is important to find the return value of the hash function. As our hash function will only work on positive natural numbers (as the range of hash-values should be between 0 and the desired size of the array), we need to check that first. If a given key is not a positive natural number, an appropriate error should be thrown.
 
@@ -166,7 +164,7 @@ isNumber(key) {
   }
 ```
 
-#### Deletion:
+#### Deletion
 
 To carry out the deletion operation, it will be important to check: a) that the given key is a positive natural number, and b) it is currently present in the hash table. If the key is not present in the hash table or if the key is not a positive natural number, an appropriate error should be thrown.
 
@@ -187,7 +185,7 @@ delete(key) {
   }
 ```
 
-#### Update:
+#### Update
 
 To implement the updation operation, the following should be checked: a) the validity of the key, and b) whether the key is present in the hash table. If the key is not present in the hash table or if the key is not valid, an appropriate error should be thrown.
 
@@ -231,7 +229,7 @@ Given that hash functions are many-to-one functions, it is possible that two key
 
 There are largely two ways of handling collisions: a) separate chaining, and b) probing
 
-#### Separate Chaining:
+### Separate Chaining
 
 Instead of directly storing the associated value of the key in the relevant (hash-value) index of the array, each slot of the array can contain a linked list. Each time a key-value pair needs to be inserted to the hash table, the key-value pair will be inserted as a new node in the linked list at the hash-value index of the array. In this way, in the event of a collision, additional key-value pairs will be inserted as new nodes to the relevant linked-list. This makes each index of the array, a 'hash bucket'.
 
@@ -239,11 +237,11 @@ It is significant to note that, both the key and its associated value should be 
 
 The time-complexity for the look-up operation in a linked-list is O(n). To increase the efficiency of the hash table, separate chaining can be implemented using a binary search tree (instead of a linked list), as it will provide a time-complexity of O(log n). 
 
-### Implementing Separate Chaining:
+### Implementing Separate Chaining
 
 The following part discusses the implementation of linked-list based separate chaining.
 
-##### Insertion:
+#### Insertion
 
 As opposed to the simple implementation shown above, the insertion operation should add a new node (carrying the the key-value pair) to the linked-list stored in the hash-value index of the array.
 
@@ -311,9 +309,7 @@ find(key) {
   }
 ```
 
-The complete implementation can be found [here](/hash-browns/blob/main/hash_table_chaining_linkedList.mjs).
-
-##### Deletion:
+#### Deletion
 
 In addition to the general checks required to be carried out (i.e., checking the validity of the key and the existence of the key in the hash table), this operation will call the `delete` method of the `Node` object stored in the relevant hashed-to index of the array. This method deletes the relevant node (containing the key) from the linked-list and returns the head-node of that linked-list. The returned head-node is stored in the index of the array.
 
@@ -337,7 +333,7 @@ delete(key) {
   }
 ```
 
-##### Updation and Look-Up:
+#### Updation and Look-Up
 
 The updation and look-up operations will rely on the `find` method of the `Node` object stored in the hashed-to index of the array. This method returns the node containing the relevant node of the linked-list containing the given key. In the case of the updation operation, the `value` property of that node is updated to the new value. In the case of look-up, the `value` property is returned.
 
@@ -375,8 +371,9 @@ lookUp(key) {
     throw `Key is not a positive natural number: ${key}`;
   }
 ```
+The complete implementation can be found [here](/hash-browns/blob/main/hash_table_chaining_linkedList.mjs).
 
-### Probing:
+### Probing
 
 As an alternative to separate chaining, key-value pairs can be directly stored in the hash table itself. When a new pair needs to be inserted, the hashed-to slot of the hash table is examined. If it is already occupied, the next slot is examined. If that slot is also occupied, the next slot after that is examined. This continues till an empty slot is found.
 
@@ -386,7 +383,7 @@ Like in the case with separate chaining, it would be important to store both the
 
 Also, it is important to note that while deleting an existing key-value pair from the hash table, the existing pair should be replaced with a special value (such as `NaN`) in order to differentiate itself from an empty slot (which is marked as `null`). This distinction is important, as the search for a key-value pair should be terminated only when an empty slot is reached, and not upon reaching a slot that erstwhile contained a key-value pair.
 
-### Implementing Probing:
+### Implementing Probing
 
 To implement the hash table operations, using linear probing, it would be crucial to write a method (`findIndex`) that can find the index of a given key in the hash table. This method will start from the hash-value index of the array and continue looking for the given key (by following the probing sequence), till it either reaches the given key or reaches an empty slot. If the given key is found, it should return the key-value pair. Otherwise, it should return `null`, indicating the absence of the key in the hash table.
 
@@ -417,7 +414,7 @@ findIndex(key) {
 
 Note that there are two for-loops: one for running the probing sequence from the hash-value index till the end of the array, and two, for running the probing sequence from the beginning of the array till the hash-value.
 
-##### Insertion:
+#### Insertion
 
 A new key-value pair should be inserted in the first empty slot available, starting with the hash-value index, and following the probing sequence. As noted above, while inserting a new pair, a new object containing both the key and the value, should be inserted in the index.
 
@@ -448,7 +445,7 @@ insert(key, value) {
 
 It is important to note that, while inserting a new key-value pair, any slot containing `null` or `NaN` should be considered as an 'empty' slot.
 
-##### Deletion
+#### Deletion
 
 To delete an existing pair, the relevant slot of the array should be replaced with `NaN`:
 
@@ -495,14 +492,14 @@ update(key, newVal) {
     throw `Key is not a positive natural number: ${key}`;
   }
 ```
-
+The complete implementation of linear probing can be found [here](https://github.com/oitee/hash-browns/blob/main/hash_table_linear_probing.js).
 ### Separate Chaining vs Probing
 
 Probing is more space efficient than separate chaining, as key-value pairs are directly stored in the hash table. However, an important draw-back of probing is that it cannot be relied upon when the number of keys reaches the maximum capacity of the hash table. As key-value pairs are directly stored in the hash table, when the number of key-value pairs reach the maximum capacity, there would not be any space left in the table to insert a new pair.
 
 On the other hand, as we use linked lists or binary search trees in separate chaining—which can store any number of nodes—there is no limitation on the total number of key-value pairs that can be stored. However, the worst-case time-complexity can become O(n) (in case of linked lists) or O(log n) (for binary search trees).
 
-## Load factor and Re-hashing
+### Load factor and Re-hashing
 
 As noted above, an ideal hash function should distribute keys evenly, mainly to avoid collisions. The reason why collisions are undesirable is because it increases the time-complexity of the operations of the hash table.
 
@@ -587,6 +584,8 @@ rehash() {
   }
 ```
 The complete implementation can be found [here](https://github.com/oitee/hash-browns/blob/main/hash_table_rehashing.mjs).
+
+### Summary
 
 Here's short presentation summarising this post:
 
