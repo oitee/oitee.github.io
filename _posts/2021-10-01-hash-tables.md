@@ -2,6 +2,7 @@
 layout: post
 title: "Hash Tables"
 tags: conceptual
+date: 2021-10-1 10:10 +0530
 ---
 
 This post is about key-value stores and hash tables.
