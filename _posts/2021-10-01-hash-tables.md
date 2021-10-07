@@ -99,7 +99,7 @@ This method involves multiplying a given key with a constant (`A`), ranging betw
 Unlike the division method, the value of `m` (the size of the hash table) is not crucial for the efficiency of the hash table. However, it involves more number of operations than the division method.
 
 ```js
-function hashFn (key) => m * (key * A % 1);
+function hashFn (key) => Math.floor(m * (key * A % 1));
 ```
 
 ### Hash Table: Simple implementation
