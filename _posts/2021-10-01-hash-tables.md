@@ -1,20 +1,20 @@
 ---
 layout: post
-title: "Hash Tables"
+title: "Hash Tables from Ground Up"
 tags: conceptual
 date: 2021-10-1 10:10 +0530
 ---
 
-This post is about key-value stores and hash tables.
+This post is about key-value stores and hash tables. In the first part, it will discuss how key-value stores can be implemented using arrays and binary search trees. The second part will explore the design and implementation of hash tables and discuss the different ways of resolving collisions.
 
-In this post, I will briefly show how key-value stores can be implemented using arrays and binary-search trees. Subsequently, I will move on to hash tables and discuss what hash functions are, the benefits of using hash tables and the methods of resolving collisions.
+## Key-Value Stores
 
-A key-value store is a type of database that uses a key-value method to store data. Essentially, it is composed of a series of key-value pairs. A key-value pair refers to two pieces of data that are associated with each other. The key serves as a unique identifier to an associated value. Importantly, keys in a key-value store need to be unique (no duplication) in order to avoid ambiguity while searching for a specific key-value pair; the value can be any form of data, including a another key-value pair.
+A key-value store is a type of data store that uses a key-value method to store data. Essentially, it is composed of a series of key-value pairs. A key-value pair refers to two pieces of data that are associated with each other. The key serves as a unique identifier to an associated value. Importantly, keys in a key-value store need to be unique (no duplication) in order to avoid ambiguity while searching for a specific key-value pair; the value can be any form of data, including another key-value pair.
 
 Key-value stores are most commonly used for the following four operations:
 
-- Inserting new key-value pairs into the collection.
-- Deleting existing key-value pairs from the collection.
+- Inserting new key-value pairs
+- Deleting existing key-value pairs 
 - Updating the values of existing pairs.
 - Finding a value associated with a particular key. If there is no such value, then returning an exception
 
@@ -22,19 +22,19 @@ Key-value stores are often commonly referred to as dictionaries and associative 
 
 ## Direct Addressing
 
-The simplest way to implement a key-value store is to **treat the index of an array** as the key and to store the associated value in the corresponding slot of the array. This works well if we can be sure that the key will always be a positive integer. Otherwise, we will need to implement a function that converts keys of other data-types to a positive integer. For example, while dealing with keys that are strings, we can use the uni-code values of the constituent characters as keys. Here's how the four key operations will be implemented:
+The simplest way to implement a key-value store is to **treat the index of an array** as the key and to store the associated value in the corresponding slot of the array. This works well if we can be sure that the key will always be a positive integer. Otherwise, we will need to implement a function that converts keys of other data-types to a positive integer. For example, while dealing with keys that are strings, we can use the unicode values of the constituent characters as keys. Here's how the four key operations will be implemented:
 
 - **Insertion:** To insert a new pair (say, `k` indicating the key, and `v` indicating the associated value), we first need to check if the `k`th index of the array is empty. If it is not empty, an appropriate error should be thrown as duplication of keys is not permitted. If the corresponding slot is empty, the value, `v`, can be inserted in the `k`th index.
 
 - **Deletion:** To delete a key-value pair, we would just need the value of the key (`k`). If the `k`th index of the array is empty, an appropriate error should be thrown as it would indicate an attempt to delete a pair that does not exist. Else, the value stored at the `k`th index should be deleted (by changing it into `undefined`). The deleted value can be returned to the caller.
 
-- **Updation:** To update the value of an existing key-value pair, we would need the value of the key (`k`) and the new value(`newVal`) that needs to be updated. If the `k`th index is empty, an error should be thrown. Else, the existing value at the `k`th index should be replaced by the new value (`newVal`). The existing value can be returned to the caller.
+- **Updation:** To update the value of an existing key-value pair, we would need the value of the key (`k`) and the new value(`newVal`) that needs to be updated. If the `k`th index is empty, an error should be thrown. Otherwise, the existing value at the `k`th index should be replaced by the new value (`newVal`). The existing value can be returned to the caller.
 
-- **Look-up:** To look-up the existing value of a key-value pair, we would need the value of the key(`k`). If the `k`th index is empty, an appropriate error should be thrown. Else, the value stored at the `k`th index should be returned.
+- **Look-up:** To look-up the existing value of a key-value pair, we would need the value of the key(`k`). If the `k`th index is empty, an appropriate error should be thrown. Otherwise, the value stored at the `k`th index should be returned.
 
-[Here](https://github.com/oitee/hash-browns/blob/main/key_value_array.js) is the complete implementation of a key-value store, using arrays. (In this implementation, there is an additional method called `convertToUnicode` that checks if a given key is a positive integer. If it is not, it converts the key to a string, and returns the cummulative uni-code values of its characters.)
+[Here](https://github.com/oitee/hash-browns/blob/main/key_value_array.js) is the complete implementation of a key-value store, using arrays. (In this implementation, there is an additional method called `convertToUnicode` that checks if a given key is a positive integer. If it is not, it converts the key to a string, and returns the cumulative unicode values of its characters.)
 
-While the implementation of a key-value store using an array is trivial, the time-complexity for look-up is constant, i.e., O(1). This is because of the property of arrays providing an O(1) for random access. However, it is significant to note that if we create a key-value store (`phoneBook`) for storing phone-numbers of persons, such that the first name of the contact acts as the key (which will first need to be appropriately converted into a positive natural number), the store will likely have a very **large number of empty elements**. To illustrate this, let's use the `phoneBook` to store the phone numbers for two contacts, namely `Bella` ('+ 91 2441139') and `Emergency` ('100'). It will first convert the names of the contacts to positive natural numbers by, say, taking the sum of the uni-code values of each character of the strings. `Bella` will be converted to `480` and `Emergency` will be converted to `927`. In order to store these two keys, the size of the array will be `928`. In fact, if we print the contents of the array implementing the `phoneBook`, the output will be:
+While the implementation of a key-value store using an array is trivial, the time-complexity for look-up is constant. This is because of the property of arrays providing an O(1) for random access. However, it is significant to note that if we create a key-value store (`phoneBook`) for storing phone-numbers of persons, such that the first name of the contact acts as the key (which will first need to be appropriately converted into a positive natural number), the store will likely have a very **large number of empty elements**. To illustrate this, let's use the `phoneBook` to store the phone numbers for two contacts, namely `Bella` ('+ 91 2441139') and `Emergency` ('100'). It will first convert the names of the contacts to positive natural numbers by, say, taking the sum of the unicode values of each character of the strings. `Bella` will be converted to `480` and `Emergency` will be converted to `927`. In order to store these two keys, the size of the array will be `928`. In fact, if we print the contents of the array implementing the `phoneBook`, the output will be:
 
 ```js
 [ <480 empty items>, '+ 91 2441139', <446 empty items>, '100' ]
@@ -48,9 +48,9 @@ Clearly, this is a **major downside** of using the indices of arrays as keys for
 
 ## Binary Search Tree Implementation
 
-There is a more efficient way to store key-value pairs: using binary search trees. It is an improvement over direct addressing because irrespective of the set of potential keys that can be stored, we will need to create space **only for the keys actually being stored.**z A binary search tree allows us to keep adding new values in an orderly fashion.
+There is a more efficient way to store key-value pairs: using binary search trees. It is an improvement over direct addressing because irrespective of the set of potential keys that can be stored, we will need to create space **only for the keys actually being stored.** A binary search tree allows us to keep adding new values in an orderly fashion.
 
-Like in the case with direct addressing, this implementation will also carry out the four operations, i.e., insertion, deletion, look-up and updation. [Here's](https://github.com/oitee/hash-browns/blob/main/key_value_bst.js) how key-value stores can be implemented using a binary search trees.
+Like in the case with direct addressing, this implementation will also carry out the four operations, i.e., insertion, deletion, look-up and updation. Note that, each of these operations will translate to operations on the underlying binary search tree. Thus, for example, the insertion operation will insert a new node to the binary search tree, wherein each node will carry two data items—the key (which will be used to order the binary search tree) and its associated value—and two pointers—one to the left child node and one to the right child node. [Here's](https://github.com/oitee/hash-browns/blob/main/key_value_bst.js) how key-value stores can be implemented using binary search trees.
 
 Significantly, the time-complexity for a look-up for this implementation would be O(log n), owing to the nature of [how binary search trees are structured](/2021/08/04/binary-search.html). Thus, while binary tree based implementation provides a more efficient space-complexity than direct addressing, it is comparatively less efficient in terms of time-complexity.
 
@@ -58,19 +58,19 @@ Significantly, the time-complexity for a look-up for this implementation would b
 
 There is a third (and more efficient) way to implement key-value stores: hash tables. A hash table is a data-structure that is built using arrays. But unlike direct addressing, the index of an array is not directly used as a key. Instead, the hash tables use a special kind of function, called **hash function**, to **compute the index** of the array from a given key.
 
-### What is a hash function
+### What is a hash function?
 
-As shown above, direct addressing becomes impractical because we have finite space to store keys while the set of potential keys can be vast and may even be infinite. Instead of storing key _k_ in the index _k_ of the array, we store it in _h(k)_, where _h_ is the hash function and _k_ is the key. A hash function returns a value (called hash-value) of a given key and this value will correspond to an index of the array. In other words, a hash function computes the index of a key.
+As shown above, direct addressing becomes impractical because we have finite space to store keys while the set of potential keys can be vast and may even be infinite. Instead of storing key _k_ in the index _k_ of the array, we store it in _h(k)_, where _h_ is the hash function and _k_ is the key. A hash function maps an infinite set of inputs to a finite set. Given this, a hash function can be used to map any arbitrary key to an index of a given size. Effectively, a hash function _computes_ the index of a key: for a given key, the return value of the hash function (called hash-value) provides the index of the array where the associated value should be stored. 
 
 <img src="/assets/images/hash-function-1.png" alt="Simple hash function" width="100%"/>
 
-The main advantage of a hash function is that it is a many-to-one function. It **maps two or more keys to a specific index of the array.** This enables us to maintain an array of finite size to store keys belonging to a set of an arbitrary.
+The main advantage of a hash function is that it is a many-to-one function. It **maps two or more keys to a specific index of the array.** This enables us to maintain an array of finite size to store keys belonging to a set of arbitrary size.
 
 <img src="/assets/images/hash-function-many-to-one.png" alt="Many-to-one hash function" width="100%"/>
 
-### What makes a good hash function
+### What makes a good hash function?
 
-An good hash function is one that can satisfy the 'simple uniform hashing' assumption: any given key should be equally likely to be placed in any index of the array. This reduces the possibility of two keys to mapping to the same index.
+A good hash function is one that can satisfy the 'simple uniform hashing' assumption: any given key should be equally likely to be placed in any index of the array. This reduces the possibility of two keys to mapping to the same index.
 
 However, this is difficult to achieve in practice, because it is not possible to know _ex ante_ (i.e., at the time of designing the hash function) the nature of keys that will be passed to it. Much like the difficulty in implementing [Bélády’s algorithm](/2021/08/18/cache-replacement-policy.html), it is practically not possible to predict the keys that will actually be passed to a hash function.
 
@@ -96,7 +96,7 @@ This method involves multiplying a given key with a constant (`A`), ranging betw
 
 <img src="/assets/images/hash-function-multiplication.png" alt="Hash function (multiplication method)" width="100%"/>
 
-Unlike the division method, the value of `m` (the size of the hash table) is not crucial for the efficiency of the hash table. However, it involves more number of operations than the division method.
+Unlike the division method, the value of `m` (the size of the hash table) is not crucial for the efficiency of the hash table. However, it involves more operations than the division method.
 
 ```js
 function hashFn (key) => Math.floor(m * (key * A % 1));
@@ -131,7 +131,7 @@ As discussed above, each key-value pair should be inserted in the index correspo
 
 Further, given that keys in a key-value store are unique (i.e., there cannot be duplicate keys in the same hash table), it will also be important to check if the given key is already a part of the hash table. If yes, an appropriate error should be thrown.
 
-Finally, the corresponding value of the given key should be inserted at the index that is computed from the hash function. (Note that, this is a simple implementation that does not envisage collissions— handling of collisions are discussed later in this post).
+Finally, the corresponding value of the given key should be inserted at the index that is computed from the hash function. (Note that, this is a simple implementation that does not envisage collisions— handling of collisions are discussed later in this post).
 
 ```js
 insert(key, value) {
@@ -190,7 +190,7 @@ delete(key) {
 
 To implement the updation operation, the following should be checked: a) the validity of the key, and b) whether the key is present in the hash table. If the key is not present in the hash table or if the key is not valid, an appropriate error should be thrown.
 
-To update the associated value of a key, the existing value of at the hash-value index should be changed to the new value.
+To update the associated value of a key, the existing value of the hash-value index should be changed to the new value.
 
 ```js
 update(key, newVal) {
@@ -209,7 +209,7 @@ update(key, newVal) {
 
 #### Look-up
 
-The look-up operation should throw an error if: a) the key is not a positive natural number, or b) the key is not present in the hash table. Else, it should return the value stored at the hash-value index of the array:
+The look-up operation should throw an error if: a) the key is not a positive natural number, or b) the key is not present in the hash table. Otherwise, it should return the value stored at the hash-value index of the array:
 
 ```js
 lookUp(key) {
@@ -224,7 +224,7 @@ lookUp(key) {
   }
 ```
 
-### Handling Collisions
+## Handling Collisions
 
 Given that hash functions are many-to-one functions, it is possible that two keys that are mapped to the same slot in the array, are required to be maintained by the hash table. When this happens, there is said to be a 'collision'.
 
@@ -244,7 +244,7 @@ The following part discusses the implementation of linked-list based separate ch
 
 #### Insertion
 
-As opposed to the simple implementation shown above, the insertion operation should add a new node (carrying the the key-value pair) to the linked-list stored in the hash-value index of the array.
+As opposed to the simple implementation shown above, the insertion operation should add a new node (carrying the key-value pair) to the linked-list stored in the hash-value index of the array.
 
 ```js
 insert(key, value) {
@@ -282,7 +282,7 @@ This class contains three other methods, namely, `insert`, `find` and `delete`:
 - **delete**: This method accepts a key, and deletes the corresponding node from the linked-list containing that key.
 - **find**: This method accepts a key, and returns the node from the linked list containing that key. If no such node exists, it returns `null`
 
-When a new key-value pair needs to be inserted to the hash table such that the hashed-to index of the array is not empty (i.e., when it contains an instance of the `Node` object), the `insert` method of that `Node` object is called. This method inserts a new node to the linked list and returns the (new) head-node of that linked-list. The head-node so returned is, then, stored in that index of the array.
+When a new key-value pair needs to be inserted to the hash table such that the hashed-to index of the array is not empty (i.e., when it contains an instance of the `Node` object), the `insert` method of that `Node` object is called. This method inserts a new node to the linked list and returns the (new) head node of that linked-list. The head node so returned is, then, stored in that index of the array.
 
 ```js
 insert(key, value) {
@@ -312,7 +312,7 @@ find(key) {
 
 #### Deletion
 
-In addition to the general checks required to be carried out (i.e., checking the validity of the key and the existence of the key in the hash table), this operation will call the `delete` method of the `Node` object stored in the relevant hashed-to index of the array. This method deletes the relevant node (containing the key) from the linked-list and returns the head-node of that linked-list. The returned head-node is stored in the index of the array.
+In addition to the general checks required to be carried out (i.e., checking the validity of the key and the existence of the key in the hash table), this operation will call the `delete` method of the `Node` object stored in the relevant hashed-to index of the array. This method deletes the relevant node (containing the key) from the linked-list and returns the head node of that linked-list. The returned head node is stored in the index of the array.
 
 ```js
 delete(key) {
@@ -336,7 +336,7 @@ delete(key) {
 
 #### Updation and Look-Up
 
-The updation and look-up operations will rely on the `find` method of the `Node` object stored in the hashed-to index of the array. This method returns the node containing the relevant node of the linked-list containing the given key. In the case of the updation operation, the `value` property of that node is updated to the new value. In the case of look-up, the `value` property is returned.
+The updation and look-up operations will rely on the `find` method of the `Node` object stored in the hashed-to index of the array. This method returns the node containing the relevant node of the linked-list containing the given key. In the case of the updation operation, the `value` property of that node is updated to the new value. 
 
 ```js
 update(key, newVal) {
@@ -356,23 +356,8 @@ update(key, newVal) {
     }
     throw `Key is not a positive natural number: ${key}`;
   }
-lookUp(key) {
-    if (this.isNumber(key)) {
-      let hashVal = this.hashFn(key);
-      if (this.arr[hashVal] === null) {
-        throw `Key is not present as the hash bucket is empty: ${key}`;
-      }
-      let hashBucket = this.arr[hashVal];
-      let targetNode = hashBucket.find(key);
-      if (targetNode === null) {
-        throw `Key is not present in the hash bucket: ${key}`;
-      }
-      return targetNode.value;
-    }
-    throw `Key is not a positive natural number: ${key}`;
-  }
 ```
-The complete implementation can be found [here](/hash-browns/blob/main/hash_table_chaining_linkedList.mjs).
+The look-up operation works the same as update. It relies on the `find` method to return the `value` property of the `targetNode`. The complete implementation can be found [here](/hash-browns/blob/main/hash_table_chaining_linkedList.mjs).
 
 ### Probing
 
@@ -388,7 +373,7 @@ Also, it is important to note that while deleting an existing key-value pair fro
 
 To implement the hash table operations, using linear probing, it would be crucial to write a method (`findIndex`) that can find the index of a given key in the hash table. This method will start from the hash-value index of the array and continue looking for the given key (by following the probing sequence), till it either reaches the given key or reaches an empty slot. If the given key is found, it should return the key-value pair. Otherwise, it should return `null`, indicating the absence of the key in the hash table.
 
-In the following implementation, the `findIndex` method is written for a liner probing sequence:
+In the following implementation, the `findIndex` method is written for a linear probing sequence:
 
 ```js
 findIndex(key) {
@@ -496,7 +481,7 @@ update(key, newVal) {
 The complete implementation of linear probing can be found [here](https://github.com/oitee/hash-browns/blob/main/hash_table_linear_probing.js).
 ### Separate Chaining vs Probing
 
-Probing is more space efficient than separate chaining, as key-value pairs are directly stored in the hash table. However, an important draw-back of probing is that it cannot be relied upon when the number of keys reaches the maximum capacity of the hash table. As key-value pairs are directly stored in the hash table, when the number of key-value pairs reach the maximum capacity, there would not be any space left in the table to insert a new pair.
+Probing is more space efficient than separate chaining, as key-value pairs are directly stored in the hash table. However, an **important draw-back of probing is that it cannot be relied upon when the number of keys reaches the maximum capacity of the hash table.** As key-value pairs are directly stored in the hash table, when the number of key-value pairs reach the maximum capacity, there would not be any space left in the table to insert a new pair.
 
 On the other hand, as we use linked lists or binary search trees in separate chaining—which can store any number of nodes—there is no limitation on the total number of key-value pairs that can be stored. However, the worst-case time-complexity can become O(n) (in case of linked lists) or O(log n) (for binary search trees).
 
@@ -539,32 +524,19 @@ insert(key, value) {
         this.keys++;
         return value;
       }
-      throw `Key is already present in the hash bucket: ${key}`;
-    }
-    throw `Key is not a positive natural number: ${key}`;
+      ...
   }
   delete(key) {
-    if (this.isNumber(key)) {
-      let hashVal = this.hashFn(key);
-      if (this.arr[hashVal] === null) {
-        throw `Key not present as the hash bucket is empty: ${key}`;
-      }
-      let hashBucket = this.arr[hashVal];
-      let targetNode = hashBucket.find(key);
-      if (targetNode === null) {
-        throw `Key is not present in the hash bucket: ${key}`;
-      }
-      let deletedVal = targetNode.value;
+    ...
       this.arr[hashVal] = hashBucket.delete(key);
       this.keys--;
       return deletedVal;
-    }
-    throw `Key is not a positive natural number: {key}`;
+    ...
   }
 
 ```
 
-Here's how the methods `rehash` and `exceedLoadFactor` should be implemented:
+Here's how the methods `rehash` and `exceedLoadFactor` should be implemented (the parts which are ):
 
 ```js
 rehash() {
