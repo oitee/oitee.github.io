@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Crisp: A Simple Lisp Interpreter"
-tags: programming
+tags: project
 ---
 
 In this post, I discuss about building a simple Lisp interpreter, written in JavaScript, supporting basic Clojure syntax.
