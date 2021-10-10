@@ -4,6 +4,17 @@ layout: default
 
 
 <div class="article-list">
+  <h2>Projects</h2>
+  {% for post in site.posts %}
+  {% if post.tags contains 'project' %}
+  <h3>
+    <a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a> 
+    <span class="postdate">&nbsp;—&nbsp;{{ post.date | date_to_string }}</span> 
+  </h3>
+  <p>{{post.excerpt | strip_html}}</p>
+  {% endif %} 
+  {% endfor %}
+  
   <h2>Conceptual</h2>
   {% for post in site.posts %}
   {% if post.tags contains 'conceptual' %}
