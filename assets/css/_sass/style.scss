@@ -87,8 +87,7 @@ pre,
 code {
     overflow: auto;
     font-size: 0.7*$base-font-size;
-    border-radius: 3px;
-    border: 1px solid $brand-color;
+    background-color:#ecececfa;
     > code {
         border: none;
     }
