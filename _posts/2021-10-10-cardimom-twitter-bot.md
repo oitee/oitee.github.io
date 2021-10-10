@@ -17,7 +17,7 @@ Here's an example of a post that was tweeted by the Cardimom:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">New blog post by <a href="https://twitter.com/Microsoft?ref_src=twsrc%5Etfw">@Microsoft</a>: Announcing TypeScript 4.5 Beta <a href="https://t.co/roOwQW8Alt">https://t.co/roOwQW8Alt</a></p>&mdash; cardimom (@cardimomT) <a href="https://twitter.com/cardimomT/status/1444095045125165056?ref_src=twsrc%5Etfw">October 2, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-### Config
+## Config
 
 The config file contains the list of all the blogs that will be tracked by the system. To add a new blog, a pull request will need to be made to the config file, namely `blog_spec.json`. Each entry of the config file relates to a specific blog and it should contain the following properties:
 
@@ -25,11 +25,11 @@ The config file contains the list of all the blogs that will be tracked by the s
 - **filter:** This property should contain another JSON object. This object should have the following two properties: `includes_any` and `excludes_all`. Each of these properties should contain an array of key-words. For a blog-post to be selected by the system (for tweeting), the contents of that post or the title of the post should contain at least any one of the key-words included in the `includes_any` array and should not contain any of the key-words mentioned in the `excludes_all` array. It is, however, permissible to have either or both of these arrays to be empty. If any of these arrays is empty, the relevant filter logic (inclusion or exclusion, as the case may be) will be deemed to be fulfilled.
 - **twitter_username:** This property should contain the Twitter username of the author of the blog.
 
-### Blogs on JavaScript and TypeScript
+## Blogs on JavaScript and TypeScript
 
 The purpose of this project is to create a Twitter bot that shares blog-posts related to JavaScript and TypeScript. To this end, it is encouraged that any contributor wishing to add their blog to the config file, should add (at the least) the keywords `JavaScript`, `NodeJs` and `TypeScript` to the `includes_all` list. Contributors are permitted to add other related key-words as well.
 
-### System Design
+## System Design
 <img src="/assets/images/cardimom_system_design.png" alt="System Design" width="100%"/>
 
 **Launcher:** This module triggers the system. It is run periodically, after every 60 minutes.
@@ -51,7 +51,7 @@ The following sequence diagram provides a more detailed description of how the c
 <img src="/assets/images/cardimom_control_flow.png" alt="Control Flow" width="100%"/>
 
 
-### Database Schema
+## Database Schema
 
 The system remains connected to a database, which maintains the list of all the posts that were earlier fetched and tweeted by the system. This ensures that during each run, the system can rely on the contents of the database to determine if a particular post should be fetched, in accordance with design goals of the system (see below).
 
@@ -75,7 +75,7 @@ Indexes:
     "posts_pkey" PRIMARY KEY, btree (link)
 ```
 
-### Content Aggregation Logic
+## Content Aggregation Logic
 
 The system expects blog feeds to be in either of the two standardised formats of web feed: RSS and atom. If a blog feed does not conform to the requisite specifications of either of these two formats, the system will reject that feed. Thus, it is important that blog-feeds adhere to the specification requirements of [RSS](https://www.rssboard.org/rss-specification) and [atom](https://datatracker.ietf.org/doc/html/rfc4287). 
 
@@ -95,7 +95,7 @@ For the purpose of this project, the following meta-data needs to be fetched fro
 
 Note that, the `getElementByTagName` returns an array of all elements with a given tag name. In an RSS or atom feed, each post object will contain only one element for the tags relating to its title, date of publication, link, content. So we need to only extract the first element of each tag.
 
-### Design Goals
+## Design Goals
 
 The project is designed to ensure that no post gets tweeted more than once. In other words, the design goal of the project is that **each post should be published at most once.** To ensure this, an idempotency check is conducted, *before* tweeting a new post. To this end, the following steps are undertaken: 
 
@@ -107,19 +107,19 @@ Note that, for the very first system run, the database would be empty and potent
 
 The system runs periodically, every 60 minutes. During each run, the system filters out the list of each new and unique post and proceeds to tweet them. The fairly large interval between consecutive system runs was chosen keeping in mind Twitter's rate limits.  
 
-### Deployment and Testing
+## Deployment and Testing
 
 The project is deployed on Heroku. Heroku provides a developer-friendly platform for deploying and managing applications on the cloud. Once deployed, Heroku packages the source code of the application along with its dependencies into virtual containers (called 'dynos'), which are responsible for executing the code of the application in the relevant run-time environment.
 
-#### Need for deployment to Heroku
+### Need for deployment to Heroku
 
 By virtue of the nature of the project, the system needs to be executed in real-time (subject to periodic intervals). Unlike the earlier project implementing a [simplified version of Lisp](/2021/08/24/crisp-a-simple-lisp-interpreter.html), the present project requires the system to consistently check for new blog posts from time to time. Given this requirement, it would be difficult to reliably deploy the project locally (i.e., on a local machine), as the execution of the project would be crucially dependent on the state of the local machine for an indefinite period of time. In fact, to reliably deploy the project locally, one will need substantial allocation of resources (to prevent any future break in connectivity, failure of the local machine etc.). This is difficult to achieve on a small-scale. Thus, to avoid such road-blocks, this project is deployed on a cloud-based platform (namely, Heroku) which will offer a virtual container to consistently execute the project and maintain its database.  
 
-#### Secrets Management
+### Secrets Management
 
 To connect to Twitter and the database, we need to have certain shared secrets (e.g. password). But this cannot be part of the code, as it would be openly accessible (for example, on GitHub). Therefore the standard practice of exposing secrets through environment variables has been used in this project. To run the system locally, we can use [shell environment variables](https://www.redhat.com/sysadmin/linux-environment-variables). On Heroku, environment variables were exposed using the web UI, ensuring that the code on GitHub does not reveal secrets. 
 
-#### System Testing
+### System Testing
 
 The project implements system-wide tests (as opposed to unit tests for each module). This means that the test module will work with a sample config file and run the entire system to check if the system is producing the expected results (as opposed to testing each module separately). This was mostly done in the interest of time. 
 
@@ -131,7 +131,7 @@ System testing was done using GitHub Actions, which allows automated integration
 
    
 
-### Limitations
+## Limitations
 
 Here are some of the major limitations, arising out of the design of the project:
 
