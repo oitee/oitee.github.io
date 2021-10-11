@@ -4,7 +4,9 @@ title: "Cardimom: A Twitter Bot"
 tags: project
 ---
 
-This post is about Cardimom, a Twitter Bot that tweets interesting posts related to JavaScript and TypeScript! 
+This post is about Cardimom, a Twitter Bot that tweets interesting posts related to JavaScript and TypeScript!
+
+
 ## Scope
 
 This project is designed to tweet new posts published by a given set of blogs. This project is inspired from [Planet Clojure](https://github.com/ghoseb/planet.clojure) which tweets new posts on topics related to Clojure that are published by a certain set  of approved blogs.
