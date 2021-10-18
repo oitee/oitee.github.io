@@ -60,7 +60,7 @@ console.log(arr === arr1);//false
 
 Variables (and constants) are, in fact, [identifiers to specific values](https://oitee.github.io/2021/07/09/understanding-const.html). Thus, if two different variables are assigned the same primitive value, they both point to the same value. Hence, when they are compared, they are are found to be equal to each other. 
 
-![primitives v objects](/assets/images/IMG_4270_(1).jpg)
+<img src="/assets/images/IMG_4270_(1).jpg" alt="primitives v objects" width="100%"/>
 
 However, in the case of objects, when two variables are assigned two objects, which contain the same properties, each of these variables are, in fact, pointing to  different objects, which happen to contain the same properties. However, if a variable is assigned another variable that points to an object, the two variables will be treated to be equal, because they are pointing to the same object. No new object was created for the second variable. Conversely, if the properties of the underlying object is modified, by using either of the variables, both the variables will reflect those changes. This is why objects are often referred to as *reference types* (as opposed to *primitive types*), as two object values will be considered to be same if and only if they both refer to the same object.
 
