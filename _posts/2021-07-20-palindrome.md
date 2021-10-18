@@ -61,7 +61,7 @@ Taking a cue from some of the solutions, I figured a better way to write the sam
 - Thus, the **loop should run only when `x > reverse`**, i.e., it will stop, the moment either `x == reverse` (in case of a palindrome) or `x < reverse`
 - Once the loop is terminated, if `reverse` == `x` , then its a palindrome
 
-![Table the iteration of the loop where x is an even number](/assets/images/evennumbers_palindrome.jpg)
+<img src="/assets/images/evennumbers_palindrome.jpg" alt="Table the iteration of the loop where x is an even number" width="100%"/>
 
 #### When x is an odd number
 
@@ -70,7 +70,8 @@ Taking a cue from some of the solutions, I figured a better way to write the sam
 - Thus, the point for terminating the loop should be determined by seeing when `x` ceases to be greater than `reverse`. [In the case of odd numbers, this will happen when the `reverse` accumulates more digits than `x`, because there will never be a point when both `reverse` and `x` have the same number of digits]
 - After the loop is terminated, to see whether `x` is a palindrome, we will need to _ignore the middle number_, and then compare the `x` and `reverse`.
 
-![Table the iteration of the loop where x is an even number](/assets/images/oddnumbers_palindrome.jpg)
+<img src="/assets/images/oddnumbers_palindrome.jpg" alt="Table the iteration of the loop where x is an even number" width="100%"/>
+
 
 #### Comparing x with reverse
 

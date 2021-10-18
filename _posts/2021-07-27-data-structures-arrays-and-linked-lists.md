@@ -22,16 +22,16 @@ Linked lists are linear data structures, which are not contiguously arranged; in
 
 As linked lists can be created from scratch, it gives us freedom to design linked lists, which are best suited to the need at hand. A linked list in which each node carries a pointer to only the next or the previous node in the list, is called a **singly-linked list**. Most commonly, singly linked-lists (also called chains) will start with a head node, with each node pointing to the next node, and the last node pointing to `null`. 
 
-![Singly linked list](/assets/images/singlyLinkedList.jpg)
+<img src="/assets/images/singlyLinkedList.jpg" alt="Singly linked list" width="100%"/>
 
 
 When the last node, instead, points to the head node, it will be called a circular linked list: 
 
-![Circular linked list](/assets/images/circularLinkedList.jpg)
+<img src="/assets/images/circularLinkedList.jpg" alt="Circular linked list" width="100%"/>
 
 Nodes can also carry pointers to *both* the next and the previous nodes. Such linked lists are called **doubly-linked lists**. A doubly-linked circular list will have the head node pointing to the second node in the list, while also pointing to the last node in the list. Equally, the last node will have two pointers: one pointed to the penultimate node and the other to the head node. 
 
-![Doubly linked circular linked list](/assets/images/doublyLinkedList_Circular.jpg)
+<img src="/assets/images/doublyLinkedList_Circular.jpg" alt="Doubly linked circular linked list" width="100%"/>
 
 ## Space Efficiency
 
@@ -57,8 +57,8 @@ Linked lists, on the other hand, are not very efficient when we need to access s
 
 For inserting an element *anywhere* in a data structure, it is relatively less burdensome to do so  in a linked list. In a linked list, we can create a new node, and add its pointer to the head node, such that the newly added node becomes the head node of the list. Thus, if we are dealing with an *unsorted linked list,* where it is of little significance *where we insert* a new node, we can insert a new node with a fixed number of operations, irrespective of the length of the list. 
 
-![Inserting a node in a linked list](/assets/images/InsertingANewHead.jpg)
-  
+<img src="/assets/images/InsertingANewHead.jpg" alt="Inserting a node in a linked list" width="100%"/>
+ 
 
 But this is not the case with an array. To insert an element in an array, we may need to shift the entire array to a new memory location, if the immediately next memory location after the size of the array is already taken up (as shown above). Alternatively, if we want to insert the new element at the beginning of the array, we will need to *shift* *each element* by one index. Thus, for insertions, arrays may not be the most optimal data structure. 
 
@@ -68,7 +68,7 @@ Just like insertions, it is relatively simpler to delete nodes in a linked list.
 
 *However,* if we do not have a direct pointer to *(n-1)*th node, we have to traverse through the entire list, starting with the head node, till we reach that node, and only then can we carry out the deletion operation. 
 
-![Deleting a node in a linked list](/assets/images/deletionLinkedList.jpg)
+<img src="/assets/images/deletionLinkedList.jpg" alt="Deleting a node in a linked list" width="100%"/>
 
 In the case of arrays, as noted above, if we delete any element, every element following that element will need to be brought-forward by one index.  
 

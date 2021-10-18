@@ -36,7 +36,7 @@ When an algorithm is said to have a O(log n), it means that the *rate at which* 
 
 Contrast this with algorithms with O(n), where for each increment in the input size, there is an equivalent increase in the number of operations. Or, take the case of algorithms with exponential time-complexity, which have a multiplier effect (like the rate of spread of a viral pandemic), where for *n* new inputs, there are *c^n* new operations (where, *c* is a constant that is greater than 1). In other words, for every increment of the input size, there is a greater corresponding increase in the time-complexity of the algorithm. As we have seen in the case of the global pandemic, exponential functions *grow scarily fast*. Logarithmic functions, on the other hand, can be described as inverse-exponential functions: for every *n*  new inputs, there are less than *n* new set of operations. Thus, logarithmic functions grow at a *very gradual pace*. To illustrate this, in the following graph, the <span style="color: blue;"> **blue** </span> curve represents an **exponential** function (y = 2^x), the <span style="color: green;"> **green** </span> curve represents a **linear** function (y = x) and the <span style="color: red;"> **red** </span>  curve represents a **logarithmic** function (y = log<sub>2</sub> n).
 
-![Exponential, linear and logarithmic functions](/assets/images/exponential_linear_logarithmic.png)
+<img src="/assets/images/exponential_linear_logarithmic.png" alt="Exponential, linear and logarithmic functions" width="100%"/>
 
 ## Relevance of O(log n) in the current problem
 
@@ -107,21 +107,22 @@ There are two important points to note:
 
 While running a binary search, at each iteration, the size of the data-set shrinks by half. Assuming the worst-case scenario (i.e., when the target value is in at the index when `low==high` is true, i.e., when the data-set will be containing only one element), the number of elements remaining to be checked changes (at each iteration) as shown below:
 
-![n —> n/2 —> n/8—> n/16...n/n](/assets/images/binarysearch_1.jpg)
+
+<img src="/assets/images/binarysearch_1.jpg" alt="n —> n/2 —> n/8—> n/16...n/n" width="100%"/>
 
 First, we have n elements to check, then by looking at the middle element of the sorted array, we throw away half the array. Now, in the selected half, we have n/2 elements, which again is halved. This continues until we have only one element remaining to be checked.
 
 The above expression can be expressed in the following manner as well:
 
-![n —> n/2^1 —> n/2^2 —> n/2^3.... n/2^x](/assets/images/binarysearch_2.jpg)
+<img src="/assets/images/binarysearch_2.jpg" alt="n —> n/2^1 —> n/2^2 —> n/2^3.... n/2^x" width="100%"/>
 
 Thus, in the worst-case scenario, the total number of operations will be x:
 
-![n/2^x = 1; or n= 2^x](/assets/images/binarysearch_3.jpg) 
+<img src="/assets/images/binarysearch_3.jpg" alt="n/2^x = 1; or n= 2^x" width="100%"/>
 
 By definition, this can be expressed as:
 
-![x = log2 n](/assets/images/binarysearch_4.jpg)
+<img src="/assets/images/binarysearch_4.jpg" alt="x = log2 n" width="100%"/>
 
 Since *x* represents the number of operations, the Big-O of a binary search would be: O(log n). Thus, if there were 1024 elements in an array, a linear search would require (at-most) 1024 operations to find a specific element. A binary search, on the other hand, would require only 10 steps (as log<sub>2</sub> 1024  = 10).
 

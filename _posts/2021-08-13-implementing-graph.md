@@ -15,7 +15,7 @@ Graphs are powerful because they can be used to represent *any* form of relation
 
 Trees represent hierarchical relations. They will always have a special node called root which may have one or more sub-trees. A tree is, in fact, a special kind of graph. A tree is graph without cycles. To put it in another way, in a graph, it is permissible to connect any vertex (irrespective of where they are) to any other vertex in the same graph. As there is no specific restriction or order in which vertices need to be connected to each other, there can be multiple paths (also called 'edges') between two given vertices. But, in the case of a tree, each node will have only one specific route to reach another.
 
-![Image showing a graph with multiple paths](/assets/images/tree_and_graph.jpg)
+<img src="/assets/images/tree_and_graph.jpg" alt="Image showing a graph with multiple paths" width="100%"/>
  
 
 #### Directed and Undirected Graphs

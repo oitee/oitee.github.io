@@ -26,7 +26,7 @@ Some of the common operations involving stack are as follows:
 
 `peek()`: returns the last added item from a stack.
 
-![pop and push operations](/assets/images/stackPushPop.jpg)
+<img src="/assets/images/stackPushPop.jpg" alt="Pop and push operations" width="100%"/>
 
 ## Implementation
 
