@@ -47,12 +47,17 @@ Now, let's take the example of a post that was published earlier than the curren
 
 <img src="/assets/images/chart_out_of_order_event_2.png" alt="Out of Order Event" border="1px" width="100%"/>
 
-Now, lets say the system has progressed further and the last processing timestamp when a post was published is 11:30. Say, during a subsequent system run (at 12:00), a post is encountered with an event timestamp of 10:45. Now, this post will not get published, as it's event timestamp is earlier than the processing timestamp when the system last published a post.
+Now, let's say the system has progressed further and the last processing timestamp when a post was published is 11:30. Say, during a subsequent system run (at 12:00), a post is encountered with an event timestamp of 10:45. Now, this post will not get published, as it's event timestamp is earlier than the processing timestamp when the system last published a post.
 
  
 <img src="/assets/images/chart_complete.png" alt="Snapshot of all out of order events" border="1px" width="100%"/>
 
-From the above, three conclusions can be drawn. **First**, the system will always fetch in order events. **Second**, the system will always fetch out of order events which have a timestamp in the future (i.e., greater than the current processing timestamp). **Third**, whether an out of order event bearing a timestamp earlier than the current processing timestamp will be published or not, will be dependent on the processing timestamp when the system last published a post. This makes the system **non-deterministic when it comes to such posts.**
+From the above, three conclusions can be drawn:
+- **First**, the system will always fetch in order events. 
+
+- **Second**, the system will always fetch out of order events which have a timestamp in the future (i.e., greater than the current processing timestamp). 
+
+- **Third**, whether an out of order event bearing a timestamp earlier than the current processing timestamp will be published or not, will be dependent on the processing timestamp when the system last published a post. This makes the system **non-deterministic when it comes to such posts.**
 
 ## Decoupling event time and processing time
 
@@ -91,7 +96,7 @@ Also, cursors cannot provide any guarantee towards recency, especially with resp
 
 Thus, recency guarantee is not possible with cursors. **Watermarks solve this problem,  by maintaining a notion of running a lower bound on a given timeline**, such that if a particular timestamp on that timeline is seen, we ignore events seen thereafter. In the above hypothetical example, imagine if the system waits for a specified period of time after each hourly period, and considers every news story it sees during that waiting period as breaking news for that hourly period. **This ensures that only recent stories are published every hour, while also accounting for stories that may not have reached on time** (i.e., out of order events). But, it also means that the system will potentially leave out some stories which fail to reach the system by this specified waiting period. 
 
-Watermarks can be of two types: **event-based and processing-based**. For event-based watermarks, there is no notion of real time (wall-clock time as maintained by the processing system). Let's take an example where the additional waiting period, or watermark, is set to 30 minutes. For a window of one hour beginning at 10:00, the system will wait till it sees an event bearing a timestamp greater than 11:30. The system will start processing all the events bearing timestamps between 10:00 and 11:00, only after it sees an event with a timestamp greater than 11:30. Note that, **the system ignores when (on the wall-clock) the events bearing the watermark timestamp is actually seen**. This can be significantly later than the 30-minute waiting period (for example, if the event source(s) remain unreachable for several hours).  Event-based watermarks allow for prioritising accuracy over latency.  
+Watermarks can broadly be of two types: **event-based and processing-based**. For event-based watermarks, there is no notion of real time (wall-clock time as maintained by the processing system). Let's take an example where the additional waiting period, or watermark, is set to 30 minutes. For a window of one hour beginning at 10:00, the system will wait till it sees an event bearing a timestamp greater than 11:30. The system will start processing all the events bearing timestamps between 10:00 and 11:00, only after it sees an event with a timestamp greater than 11:30. Note that, **the system ignores when (on the wall-clock) the events bearing the watermark timestamp is actually seen**. This can be significantly later than the 30-minute waiting period (for example, if the event source(s) remain unreachable for several hours).  Event-based watermarks allow for prioritising accuracy over latency.  
 
 In processing-based watermarks, the cut-off time-period is determined as per the wall-clock of the processing system: **the system will wait for a defined time-period before processing events belonging to a particular window**. This is mainly useful when time is of the essence. For example, while live-tracking traffic data, where data processing is time-sensitive, we cannot afford to wait for an indefinite period for events bearing a particular watermark timestamp to arrive. Instead, the system will begin processing events for a given window, the moment the watermark timestamp is reached.
 
