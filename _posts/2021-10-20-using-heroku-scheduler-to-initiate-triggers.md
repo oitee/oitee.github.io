@@ -2,6 +2,7 @@
 layout: post
 title: "Cardimom: Using Heroku Scheduler to Initiate Triggers"
 tags: project
+image: /assets/images/await_pending_promises.png
 ---
 
 In this post, I discuss how I used an external scheduler to run the [Cardimom application](/2021/10/10/cardimom-twitter-bot.html), in order to prevent usage of Heroku's dynos unnecessarily. 

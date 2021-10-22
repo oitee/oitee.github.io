@@ -55,11 +55,13 @@ layout: default
   {% unless post.tags contains 'personal' %}
   {% unless post.tags contains 'programming' %}
   {% unless post.tags contains 'conceptual' %}
+  {% unless post.tags contains 'project' %}
   <h3>
     <a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a> 
     <span class="postdate">&nbsp;—&nbsp;{{ post.date | date_to_string }}</span> 
   </h3>
   <p>{{post.excerpt | strip_html}}</p>
+  {% endunless %}
   {% endunless %}
   {% endunless %}
   {% endunless %} 

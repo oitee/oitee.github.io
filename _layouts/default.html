@@ -4,57 +4,75 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1" name="viewport">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Average&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Average&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
 
-        {% seo %}
-    </head>
-    <body style="background-color: rgb(255, 255, 255)">
-        
-        <header>
-            <div class="headertab">
-                <div class="innerhead">
-                    <div class="brand">
-                        <a href="{{site.baseurl}}/"> Otee </a>
-                    </div>
-                    <ul class="navigation">
-                        <a href="{{site.baseurl}}/about/"><li>About</li></a>
-                        <a href="{{site.baseurl}}/"><li>Posts</li></a>
-                        
-                    </ul>
+    {% seo %}
+
+    <!-- Did I include an "image" variable in this post's front matter? -->
+    {% if page.image %}
+    <!-- I did! Select the "large image" card type, and supply the image path -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ site.url }}{{ page.image }}">
+    {% else %}
+    <!-- Nope! Select the "summary" card type, supplying the site's title image -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="{{ site.title_image }}">
+    {% endif %}
+</head>
+
+<body style="background-color: rgb(255, 255, 255)">
+
+    <header>
+        <div class="headertab">
+            <div class="innerhead">
+                <div class="brand">
+                    <a href="{{site.baseurl}}/"> Otee </a>
                 </div>
-            </div>
-            
-            
-        </header>
-        
+                <ul class="navigation">
+                    <a href="{{site.baseurl}}/about/">
+                        <li>About</li>
+                    </a>
+                    <a href="{{site.baseurl}}/">
+                        <li>Posts</li>
+                    </a>
 
-        <main>
-            <article>
-                {{ content }}
-            </article>
-        </main>
-
-        <footer>
-            <div class="links">
-                <a href="{{site.baseurl}}/about/">About</a>
-                <a href="https://twitter.com/oteecodes">Twitter</a>
-                <a href="https://github.com/oitee">GitHub</a>
-                <a href="{{site.baseurl}}/contact/">Contact</a>
+                </ul>
             </div>
-            <p class="copy">
-                <small style="padding-bottom: 20px"> Developed by
-                    Otee
-                </small>
-            </p>
-        </footer>
-        {% include analytics.html %}
-    </body>
+        </div>
+
+
+    </header>
+
+
+    <main>
+        <article>
+            {{ content }}
+        </article>
+    </main>
+
+    <footer>
+        <div class="links">
+            <a href="{{site.baseurl}}/about/">About</a>
+            <a href="https://twitter.com/oteecodes">Twitter</a>
+            <a href="https://github.com/oitee">GitHub</a>
+            <a href="{{site.baseurl}}/contact/">Contact</a>
+        </div>
+        <p class="copy">
+            <small style="padding-bottom: 20px"> Developed by
+                Otee
+            </small>
+        </p>
+    </footer>
+    {% include analytics.html %}
+</body>
 
 </html>
