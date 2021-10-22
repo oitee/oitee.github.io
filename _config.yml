@@ -1,10 +1,19 @@
 ### your site title here
 
 title: Otee
+tagline: Notes on Programming
+description: Various topics on programming which I learnt including data structures, algorithms, JavaScript, system design, self-reflections and much more!
 baseurl: ''
 email: contact@otee.dev
 
+twitter:
+  username: otee.codes
 
+social:
+  name: Otee
+  links:
+    - https://in.linkedin.com/in/oitihjya
+    - https://github.com/oitee
 
 highlighter: rouge
 markdown: kramdown
