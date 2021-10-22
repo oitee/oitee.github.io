@@ -1,7 +1,7 @@
 ### your site title here
 
-title: Otee
-tagline: Notes on Programming
+title: "Otee's Notes on Programming"
+tagline: Home
 description: Various topics on programming which I learnt including data structures, algorithms, JavaScript, system design, self-reflections and much more!
 baseurl: ''
 email: contact@otee.dev
