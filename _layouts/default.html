@@ -17,15 +17,15 @@
 
     {% seo %}
 
-    <!-- Did I include an "image" variable in this post's front matter? -->
+    <!-- Is there is an image property of the post? -->
     {% if page.image %}
-    <!-- I did! Select the "large image" card type, and supply the image path -->
+    <!-- If yes, select the "large image" card type, and supply the image path -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="{{ site.url }}{{ page.image }}">
     {% else %}
-    <!-- Nope! Select the "summary" card type, supplying the site's title image -->
+    <!-- Else, select the "summary" card type, supplying the site's title image -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:image" content="{{site.baseurl}}/favicon.ico"> 
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/default_image.jpg">  
     {% endif %}
 </head>
 
