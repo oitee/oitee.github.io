@@ -3,6 +3,7 @@ layout: post
 title: "Hash Tables from Ground Up"
 tags: conceptual
 date: 2021-10-1 10:10 +0530
+image: /assets/images/hash-function-many-to-one.png
 ---
 
 This post is about key-value stores and hash tables. In the first part, it will discuss how key-value stores can be implemented using arrays and binary search trees. The second part will explore the design and implementation of hash tables and discuss the different ways of resolving collisions.

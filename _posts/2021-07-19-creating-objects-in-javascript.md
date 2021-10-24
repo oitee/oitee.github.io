@@ -2,6 +2,7 @@
 layout: post
 title: Creating Objects in JavaScript
 tags: conceptual
+image: /assets/images/objects_in_javascript.png
 ---
 
 In my [earlier post](https://oitee.github.io/2021/07/14/data-types.html), I briefly touched upon how objects are an unordered collection of values. In this post, I will explore the nature of objects in JavaScript, how they are created and the concept of inheritance and prototypes.

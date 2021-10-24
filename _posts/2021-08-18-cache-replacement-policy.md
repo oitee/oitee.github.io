@@ -2,6 +2,7 @@
 layout: post
 title: Cache Replacement
 tags: conceptual
+image: /assets/images/cache_eviction_fibonacci.jpg
 ---
 
 It is said that "There are [two hard things in computer science](https://twitter.com/codinghorror/status/506010907021828096): cache invalidation, naming things, and off-by-one errors." This post will be on the first one.

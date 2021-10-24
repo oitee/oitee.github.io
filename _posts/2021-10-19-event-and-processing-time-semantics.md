@@ -2,6 +2,7 @@
 layout: post
 title: "Event and Processing Time Semantics in Blog Aggregators"
 tags: conceptual
+image: /assets/images/event_time_processing_time.png
 ---
 
 One of the identified limitations of the [Cardimom Twitter Bot](/2021/10/10/cardimom-twitter-bot.html) was that it maintained a system-wide cursor for fetching posts. This means that if the publication timestamp of a new post happens to be earlier than the timestamp when the system last published a tweet, it will ignore that new post. This post discusses how this limitation has been rectified in the project.

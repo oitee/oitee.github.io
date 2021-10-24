@@ -2,6 +2,7 @@
 layout: post
 title: "Cardimom: A Twitter Bot"
 tags: project
+image: /assets/images/cardimom_system_design.png
 ---
 
 This post is about Cardimom, a Twitter Bot that tweets interesting posts related to JavaScript and TypeScript!

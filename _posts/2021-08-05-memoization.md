@@ -2,6 +2,7 @@
 layout: post
 title: Memoization by Way of Functional Programming
 tags: conceptual
+image: /assets/images/memoization_and_functional_programming.png
 ---
 
 In this post, I explore the concept of memoization and show how it can be a useful technique when dealing with computationally intensive functions that need to be called multiple times in a program. 
