@@ -2,6 +2,7 @@
 layout: post
 title: Implementing Linked Lists
 tags: programming
+image: /assets/images/linked_lists.png
 ---
 
 In the [previous post](/2021/07/27/data-structures-arrays-and-linked-lists.html), I wrote about the concept of linked lists and how they are different from arrays. In this post, I write about some of the basic operations that can be carried out on a linked list.

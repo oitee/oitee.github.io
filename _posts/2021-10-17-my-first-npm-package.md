@@ -2,6 +2,7 @@
 layout: post
 title: "My First npm Package"
 tags: programming
+image: /assets/images/npm_package.png
 ---
 
 In this post, I describe how to publish an npm package, based on my experience of publishing my first npm package, [`@otee/toolbox`](https://www.npmjs.com/package/@otee/toolbox). 

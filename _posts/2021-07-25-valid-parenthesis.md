@@ -2,6 +2,7 @@
 layout: post
 title: Valid Parenthesis
 tags: programming
+image: /assets/images/valid_parenthesis.png
 ---
 
 In this post, I discuss how I solved a problem on LeetCode on the correct order of Parentheses.

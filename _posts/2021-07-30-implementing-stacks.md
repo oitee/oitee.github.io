@@ -2,6 +2,7 @@
 layout: post
 title: Implementing Stacks
 tags: programming
+image: /assets/images/stackPushPop.jpg
 ---
 
 Stack is a common data structure that is often used to retrieve and insert data items in a specific order. In this post, I will implement some of the common operations involving stacks.

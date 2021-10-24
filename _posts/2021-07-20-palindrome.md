@@ -2,6 +2,7 @@
 layout: post
 title: Palindrome
 tags: programming
+image: /assets/images/palindrome.png
 ---
 
 In this post, I discuss my experience of solving my _very first_ problem on LeetCode.

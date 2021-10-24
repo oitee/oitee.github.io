@@ -2,6 +2,7 @@
 layout: post
 title: Understanding const and Immutability
 tags: programming
+image: /assets/images/const_immutability.png
 ---
 
 In the [last post](https://oitee.github.io/2021/07/08/understanding-var-and-let.html), I explored the keyword `let` and how it is different from the keyword `var`. In this post, I will explore the keyword `const` and the manner of declaring immutable objects in javascript.

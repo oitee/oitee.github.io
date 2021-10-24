@@ -2,6 +2,7 @@
 layout: post
 title: Linked Lists and Arrays
 tags: programming
+image: /assets/images/doublyLinkedList_Circular.jpg
 ---
 
 In this post, I attempt to understand two of the simplest data structures: arrays and linked lists. But before that, I try to see what a 'data structure' actually means. 

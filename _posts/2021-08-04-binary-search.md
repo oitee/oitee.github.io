@@ -2,6 +2,7 @@
 layout: post
 title: Implementing Binary Search
 tags: programming
+image: /assets/images/exponential_linear_logarithmic.png
 ---
 
 In this post, I write about how I solved a [LeetCode problem](https://leetcode.com/problems/search-insert-position/) that required implementation of binary search in a sorted array.

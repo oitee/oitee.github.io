@@ -2,6 +2,7 @@
 layout: post
 title: Implementing Graphs
 tags: programming
+image: /assets/images/tree_and_graph.jpg
 ---
 A graph is an data structure consisting of a set of vertices, each of which are connected to one or more other vertices. In this post, I explore this data structure and implement some of its common operations.
 
