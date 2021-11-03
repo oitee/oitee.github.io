@@ -197,39 +197,13 @@ $ curl -X POST -d name=Otee -d likes=coding  http://localhost:4000/
 
 Why name-value pairs? The default `content-type` for POST requests is `application/x-www-form-urlencoded`. See the last request header of the example below:
 
-```bash
-$ curl -X POST -d name=Otee -d likes=coding -v http://localhost:4000/
-Note: Unnecessary use of -X or --request, POST is already inferred.
-*   Trying 127.0.0.1:4000...
-* TCP_NODELAY set
-* Connected to localhost (127.0.0.1) port 4000 (#0)
-> POST / HTTP/1.1
-> Host: localhost:4000
-> User-Agent: curl/7.68.0
-> Accept: */*
-> Content-Length: 22
-> Content-Type: application/x-www-form-urlencoded
-> 
-* upload completely sent off: 22 out of 22 bytes
-* Mark bundle as not supporting multiuse
-< HTTP/1.1 200 OK
-< X-Powered-By: Express
-< Content-Type: text/html; charset=utf-8
-< Content-Length: 13
-< ETag: W/"d-0RvNociryM3YMd606WbpAiX7I8g"
-< Date: Mon, 01 Nov 2021 02:58:11 GMT
-< Connection: keep-alive
-< Keep-Alive: timeout=5
-< 
-* Connection #0 to host localhost left intact
-Post Request!
-```
+<img src="/assets/images/http_curl_post_data.png" alt="Default content-type header" border="1px" width="100%"/>
+
+
 
 So, in case, we want to send any other type of data, we should explicitly modify the `content-type` header accordingly:
 
-```bash
-curl -X POST -d 'Hey! My name is Otee' -H 'Content-Type: text/html' -v http://localhost:4000/
-```
+<img src="/assets/images/http_curl_post_text.png" alt="Text/html content-type header" border="1px" width="100%"/>
 
 
 
