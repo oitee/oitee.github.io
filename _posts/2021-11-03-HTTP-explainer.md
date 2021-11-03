@@ -27,7 +27,7 @@ HTTP works by way of exchange of individual messages between clients and servers
 
 Uniform Resource Locator, or URL, is a web-address (often called a 'link') which points to a resource on the web. Plainly speaking, URLs are resource locations that a browser needs to know to retrieve a specific set of data. URLs are also the human access point to the web: by typing in the URL, the browser (or any other user agent) will initiate a set of steps to reach the resource location and retrieve information.
 
-For example, the URL of this page is : [https://otee.dev/2021/10/28/http-basics.html](https://otee.dev/2021/11/03/http-explainer.html)
+For example, the URL of this page is : [https://otee.dev/2021/11/03/HTTP-explainer.html](https://otee.dev/2021/11/03/HTTP-explainer.html)
 
 Every URL must conform to a specific syntax. Accordingly, a URL typically consists of the following parts:
 
