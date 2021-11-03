@@ -49,7 +49,6 @@ This is partly to celebrate the joy of Diwali. But also to see if a full-time pr
 8. Creating the database schema for users and roles
 9. Modifying the sign-up/login flow to use the database as a persistent store (as opposed to using epehemeral JS object in memory for storing users in the system)
 10. Add installation of Postgres as a service on GitHub workflow so that integration tests can continue to be run on GitHub.
-
-### 
+ 
 
 _This is just a daily log I am maintaining as I embark on this project. I will publish a detailed post on this project, including a README on my [GitHub repository](https://github.com/oitee/twirl), once it is completed. Happy Diwali!_
