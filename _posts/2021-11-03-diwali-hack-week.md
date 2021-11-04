@@ -65,6 +65,25 @@ This is partly to celebrate the joy of Diwali. But also to see if a full-time pr
 11. Use NodeJs' [Crypto createHash](https://nodejs.org/api/crypto.html#cryptocreatehashalgorithm-options) function to generate base64 digest + unique counter to achive unique short link
 12. Add link controller to ensure conversion between short and long links is possible per user (short links are maintained on a per-user basis along with usage analytics)
 13. [Integration tests](https://github.com/oitee/twirl/actions) for multi-user multi-link shortening and reversing of links, plus usage analytics.
- 
+
+### November 4, 2021:
+
+1. Bug fix: Allow expansion of short links by anyone, irrespective of which user created it
+2. Add test to ensure that expansion of short links can be done by any user
+3. Use `randomBytes` function from NodeJs' [crypto library](https://nodejs.org/api/crypto.html) to generate a pseudo-random string, for a creating shortened link (instead of the earlier approach of using md5 to do this)
+4. Refactor tests for links
+5. Add a new route for accepting requests for short link creation
+6. Understand how events can be used in HTML forms to invoke JavaScript functions, instead of reloading the whole page every time a form is submitted. These kinds of applications are called 'single page application' where the page loads only once and the rest is done through JavaScript, so that we only load the parts that are required for every action and not the whole page, making the page more responsive and fast.
+7. Add client-side form and JavaScript to call the respective route and display to user the shortened link
+8. Understand why domain name is not available to the HTTP server running on a port. Post DNS resolution, HTTP requests are delivered to the IP address of the server; the server cannot infer what domain name was actually used to make a request. In fact, there can be multiple domain names mapping to the same IP address.
+9. Use the `window.location` object on client-side JavaScript to construct the final short URL, by adding current window's host. Alternatively, the server could've used the host header of a request, to generate the short link. But this would not work on all user-agents (eg. `curl` on CLI)
+10. Add tests to validate that shortening of links is only available for authenticated sessions using the pre-existing authentication middle-ware
+11. Add functionality to redirect shortened links to the original link
+12. Update authentication middle-ware to support unauthenticated route matching both on the route path as well as the route method (i.e., authentication to be skipped if both the route and the method match the exemption rule). All other cases are treated as authenticated routes.
+13. Add exemption for the `GET` short link route in the authentication middle-ware, which will re-direct to the original (long) link, without requiring authentication
+14. Prepare analytics SQL query for finding top most used short link for a given user.
+15. Understand how HTML tables are created 
+16. Display current user's top links in an HTML table which auto refreshes every 5 seconds, using client-side JavaScript and `setInterval`.
+
 
 _This is just a daily log I am maintaining as I embark on this project. I will publish a detailed post on this project, including a README on my [GitHub repository](https://github.com/oitee/twirl), once it is completed. Happy Diwali!_
