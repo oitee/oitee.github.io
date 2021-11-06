@@ -85,5 +85,17 @@ This is partly to celebrate the joy of Diwali. But also to see if a full-time pr
 15. Understand how HTML tables are created 
 16. Display current user's top links in an HTML table which auto refreshes every 5 seconds, using client-side JavaScript and `setInterval`.
 
+### November 5, 2021:
+
+1. Add tests for analytics data
+2. Test analytics controller by passing a mock middle-ware which acts like Express' request response messages, without requiring to restart the server('duck-typing')
+3. Test to ensure that sorting of links on the analytics table respects a pre-defined order: using `setTimeout` to ensure that shortening of specific links take place at a later point of time and tests check that links that are shortened later are ordered in descending order of creation.
+4. Deep-dive into how promises are implemented in JavaScript and implement a toy version of promise which does the same.
+5. Add routes for enabling and disabling of links
+6. Add front end JavaScript for calling server-side functions to enable and disable links from the analytics table
+7. Overhaul UI by using Bootstrap, for sign-up, sign-in and home-page
+8. Deploy to Heroku: create a new app for NodeJs, install Postgres, add git remote for Heroku, update port (so that it respects Heroku's `PORT` environment variable, on which Heroku's traffic is directed to)
+9. This is a paragraph.The system is **LIVE at** [**https://oteetwirl.herokuapp.com/home**](https://oteetwirl.herokuapp.com/home)
+
 
 _This is just a daily log I am maintaining as I embark on this project. I will publish a detailed post on this project, including a README on my [GitHub repository](https://github.com/oitee/twirl), once it is completed. Happy Diwali!_
