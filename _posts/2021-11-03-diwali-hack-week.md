@@ -95,7 +95,23 @@ This is partly to celebrate the joy of Diwali. But also to see if a full-time pr
 6. Add front end JavaScript for calling server-side functions to enable and disable links from the analytics table
 7. Overhaul UI by using Bootstrap, for sign-up, sign-in and home-page
 8. Deploy to Heroku: create a new app for NodeJs, install Postgres, add git remote for Heroku, update port (so that it respects Heroku's `PORT` environment variable, on which Heroku's traffic is directed to)
-9. This is a paragraph.The system is **LIVE at** [**https://oteetwirl.herokuapp.com/home**](https://oteetwirl.herokuapp.com/home)
+9. The system is **LIVE at** [**https://oteetwirl.herokuapp.com/home**](https://oteetwirl.herokuapp.com/home)
 
+### November 7, 2021:
 
-_This is just a daily log I am maintaining as I embark on this project. I will publish a detailed post on this project, including a README on my [GitHub repository](https://github.com/oitee/twirl), once it is completed. Happy Diwali!_
+1. After deploying on the 5th, some feedback was received from users. Based on this, the following changes have been made.
+2. Allow links to be shortened, even if they do not have `http` or `https` prefix.
+3. Change the HTTP method for disabling and enabling of links, from `GET` to `POST`. This is because, enabling/disabling changes the attributes related to the links, and hence this should not be a `GET` request, as `GET` is conventionally used only for fetching resources.
+4. Update front-end JavaScript to reduce the interval between calls to `/analytics` route from 1 second to 30 seconds. 
+5. Explicitly update analytics data on the home page, when a new link is created or an existing link is enabled/disabled. This is done to reduce the number of calls made from the browser to the back-end.
+6.  Impose a minimum length requirement for passwords, during sign-up.
+7. Add Google reCAPTCHA v2 for sign-up, to prevent bots from creating dummy accounts on the database.
+8. Add secrets in the back-end to ensure proper validation of reCAPTCHA widget from the front-end and exempt reCAPTCHA validation in tests.
+9. Minor changes to front-end home page.
+10. Allow admin users to see all links on the home page, including links created by other users.
+11. Ensure link status updation (enable/disable) can only be done by the owner of the link, irrespective of the role of the current user.
+12. Understand the how SSL termination happens on Heroku. 
+13. Add an environment variable which controls if HTTPS should be enforced by the app. If so, requests made over HTTP will be redirected to the HTTPS counterpart and cookies will be created with the secure attribute.
+14. This **concludes the development of the app**! It took seven days. 🎉
+
+*This is just a daily log I maintained as I embarked on this project. I will publish a detailed post on this project, including a README on my [GitHub repository](https://github.com/oitee/twirl), once it is completed. Happy Diwali!*
