@@ -247,7 +247,7 @@ In contrast, creating promises in Clojure is relatively simpler:
 ```clojure
 (def p (promise))
 ...
-(deliver p (3))// this resolves the promise
+(deliver p 3)// this resolves the promise
 ```
 
 The cognitive load for writing promises in JavaScript seems to be higher, than the first-level promise creation and resolution as provided by Clojure. May be there is good reason as to why the path to creating and resolving promises is so complicated in JavaScript. 
