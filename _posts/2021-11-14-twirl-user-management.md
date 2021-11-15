@@ -5,7 +5,7 @@ tags: project
 image: /assets/images/twirl_user_routes.png
 ---
 
-This post is the first part of a two-part series on [Twirl](https://oteetwirl.herokuapp.com/)—a web app that shortens URLs on a per-user basis. 
+This post is the first part of a two-part series on [Twirl](https://oteetwirl.herokuapp.com/)—a web app that shortens URLs on a per-user basis. Twirl is deployed on Heroku and can be accessed here: [https://oteetwirl.herokuapp.com/](https://oteetwirl.herokuapp.com/)
 
 The design of this project can be divided into two key parts: **user management** and **link shortening.** The first part deals with the user sign-up and sign-in flow. It ensures that only users with valid credentials can access authenticated routes. The latter involves the business logic of shortening URLs, retrieval of previously shortened URLs and displaying analytics regarding each shortened URL of users. This post disscuses the first part of the project, namely user-management. The next post will discuss the latter part dealing with the shortening and expansion of links.
 
