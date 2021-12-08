@@ -9,16 +9,21 @@ published: true
 <img src="/assets/images/hello_world.png" alt="Banner" width="100%"/>
 
 
-Hello! I am Otee and thank you for visiting! I am a qualified lawyer who is learning to code! I’d love to [hear from you]((mailto:contact@otee.dev)). 
+Hello! I am Oitihjya (Otee) and thank you for visiting! I am a qualified lawyer who is learning to code! I’d love to [hear from you]((mailto:contact@otee.dev)). 
+
+- I have worked as a **Research Fellow** at India’s [leading legal think tank](https://vidhilegalpolicy.in/team/oitihjya-sen/) since 2019. As a Research Fellow, I have researched extensively on [modernizing India’s bankruptcy legal framework](https://vidhilegalpolicy.in/wp-content/uploads/2020/07/Report-on-Pre-Packaged-Insolvency-Resolution.pdf) and advised the Government of India on [implementing key bankruptcy reforms](https://vidhilegalpolicy.in/blog/pre-packaged-insolvency-resolution-under-the-insolvency-and-bankruptcy-code-ibc-an-overview/).
+
+- After having worked in this field for three years, I am currently switching to a new career in software engineering.
+
+- I have worked on **five projects** so far: 
+    - A [per-user URL shortener](https://oteetwirl.herokuapp.com/) ([GitHub Repository](https://github.com/oitee/twirl)),
+    - A [Twitter bot](https://twitter.com/cardimomT) that aggregates blog posts from RSS and Atom feeds and publishes them on Twitter ([GitHub Repository](https://github.com/oitee/cardimom)),  
+    - A simple [Lisp interpreter](https://otee.dev/2021/08/24/crisp-a-simple-lisp-interpreter.html) ([GitHub Repository](https://github.com/oitee/crisp)), 
+    - Implementation of [Search Relevance using BM25 algorithm](https://otee.dev/2021/11/24/search-relevance-using-bm-25.html) ([GitHub Repository](https://github.com/oitee/bm25)), and
+    - This [blog](https://otee.dev/) ([GitHub Repository](https://github.com/oitee/oitee.github.io))
 
 
-Here are a few things I'd _love_ to tell you more about over a hot cup of Darjeeling Tea:
-
-- I am a graduate from India’s [National Law University](https://hnlu.ac.in/) and I have worked as a Research Fellow at India’s [leading legal think tank](https://vidhilegalpolicy.in/team/oitihjya-sen/) since 2019.
-
-- I am currently learning JavaScript and I write weekly about new concepts I learn. It has been an exciting journey and I aim to periodically write about my entire experience (the ups and **the downs**)!
-
-- I’ve recently written a project that implements a [simple Lisp interpreter](https://github.com/oitee/crisp)! I would love to hear your suggestions on it!
+- As a self-learner, I follow the **Feynman Technique** of learning new concepts by writing about them in my own words. I have published over **30 posts** so far, documenting my understanding of various topics ranging from [higher-order functions](https://otee.dev/2021/07/11/higher-order-functions.html), [JavaScript Promises](https://otee.dev/2021/11/10/javascript-promises.html) to [cache replacement policies](https://otee.dev/2021/08/18/cache-replacement-policy.html).
 
 - I love participating in spirited debates, discussing politics over coffee,  and listening to good old [RabindraSangeet](https://en.wikipedia.org/wiki/Rabindra_Sangeet)!
 
