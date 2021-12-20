@@ -47,9 +47,32 @@ As the state of the system is maintained by the database, we store the current v
 
 ### Need for atomicity while generating counters
 
-If multiple servers access the same database and attempt to modify the same data, it can lead to duplication or inconsistency of the data being modified. In the present context, consider that the system processes each request for generating a short link by making two separate queries with the database: first, to update the counter in the database, and then, to read the value of the counter so updated. Now, if two concurrent requests are received (assuming the server can handle multiple threads), **the server will make two sets of these queries,** **simultaneously.** Ideally, the update-and-read transactions should happen sequentially, once for each request. But because the requests are being processed parallely, the two update queries (one for each of the two requests) may get processed first, before the two read queries. **This will result in two short links relying on the same counter**. This will reduce the uniqueness guarantee of the system. If the system receives multiple concurrent requests, it will be (at least) theoretically possible that two short links (generated for two different URLs) are identical, as they may rely on the same value of the counter and the same pseudo-random data.
+If multiple servers access the same database and attempt to modify the same data, it can lead to duplication or inconsistency of the data being modified. In the present context, consider that the system processes each request for generating a short link by making two separate queries with the database: first, to update the counter in the database, and then, to read the value of the counter so updated. Now, if two concurrent requests are received (assuming the server can handle multiple threads), **the server will make two sets of these queries, simultaneously.** Ideally, the update-and-read transactions should happen sequentially, once for each request. But because the requests are being processed parallely, the two update queries (one for each of the two requests) may get processed first, before the two read queries. **This will result in two short links relying on the same counter**. 
 
-To avoid this and to guarantee uniqueness of short links at all times, we use **atomic transactions** to update and read the counter values from the database. An atomic transaction is an “*[indivisible and irreducible series](https://en.wikipedia.org/wiki/Atomicity_(database_systems)) of database operations such that either all occurs, or nothing occurs*”. This can be achieved if we use the `RETURNING` clause in the query for updating the value of the counter. The `RETURNING` clause allows us to “*obtain data from modified rows [while they are being manipulated](https://www.postgresql.org/docs/9.5/dml-returning.html)*”. In other words, it rolls a `SELECT` operation into a query for modifying the database. This ensures that either both the updation and reading operation on the database will fail or succeed and that we will read the data being updated by each transaction.
+Let's take an example. Let the present value of the counter (`c`) be `1`. `R1(c)` indicates that thread 1 reads the value of the counter `c`. `W1(c, c + 1)` indicates that thread 1 writes the value of the counter by incrementing it by one. Now, this is the single threaded execution sequence:
+
+    W1(c, c + 1); // value of c is increased to 2
+    X = R1(c); // value of X is 1
+
+Expected two-threaded execution sequence (with initial value of `c` as 1):
+
+    W1(c, c + 1); // value of c is incrased to 2
+    X = R1(c); // value of X is 2
+    W2(c, c + 1); // value of c is increased to 3
+    Y = R2(c); // value of Y is 3
+
+However, because multiple threads run parallely, the following can also happen:
+
+    W1(c, c + 1); // value of c is incrased to 2
+    W2(c, c + 1); // value of c is incrased to 3
+    X = R1(c); 
+    Y = R2(c); //the values of both X and Y are 3
+
+This will reduce the uniqueness guarantee of the system. If the system receives multiple concurrent requests, it will be (at least) theoretically possible that two short links (generated for two different URLs) are identical, as they may rely on the same value of the counter and the same pseudo-random data.
+
+To avoid this and to guarantee uniqueness of short links at all times, we use **atomic transactions** to update and read the counter values from the database. An atomic transaction is an “*[indivisible and irreducible series](https://en.wikipedia.org/wiki/Atomicity_(database_systems)) of database operations such that either all occurs, or nothing occurs*”. The above example (involving two threads), breaks down because between the time you update the value and the time you read its value, the value itself gets changed (by another transaction). This can be avoided if we use atomic transactions: it ensures that the reading and writing operations are indivisible and thereby ensuring that we read what we write. 
+
+Atomicity can be achieved if we use the `RETURNING` clause in the query for updating the value of the counter. The `RETURNING` clause allows us to “*obtain data from modified rows [while they are being manipulated](https://www.postgresql.org/docs/9.5/dml-returning.html)*”. In other words, it rolls a `SELECT` operation into a query for modifying the database. This ensures that either both the updation and reading operation on the database will fail or succeed and that we will read the data being updated by each transaction.
 
 ```sql
 UPDATE counters SET value=value+1 WHERE id='link_counter' RETURNING value
