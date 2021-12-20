@@ -115,3 +115,5 @@ crypto.pbkdf2Sync(password, salt, 100, 64, "sha512")
 .toString("base64")
 
 ```
+
+*This post is the second part of a three-part series on [Twirl](https://oteetwirl.herokuapp.com/). In the [first part](/2021/11/14/twirl-user-management.html), I gave an overview of the project structure of Twirl and discussed the user management component of the application. In the [next part](/2021/12/20/twirl-link-shortening.html), I discuss the how short links are genered by Twirl.*

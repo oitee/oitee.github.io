@@ -5,7 +5,7 @@ tags: project
 image: /assets/images/twirl_user_routes.png
 ---
 
-This post is the first part of a two-part series on [Twirl](https://oteetwirl.herokuapp.com/)—a web app that shortens URLs on a per-user basis. Twirl is deployed on Heroku and can be accessed here: [https://oteetwirl.herokuapp.com/](https://oteetwirl.herokuapp.com/)
+This post is the first part of a three-part series on [Twirl](https://oteetwirl.herokuapp.com/)—a web app that shortens URLs on a per-user basis. Twirl is deployed on Heroku and can be accessed here: [https://oteetwirl.herokuapp.com/](https://oteetwirl.herokuapp.com/)
 
 The design of this project can be divided into two key parts: **user management** and **link shortening.** The first part deals with the user sign-up and sign-in flow. It ensures that only users with valid credentials can access authenticated routes. The latter involves the business logic of shortening URLs, retrieval of previously shortened URLs and displaying analytics regarding each shortened URL of users. This post disscuses the first part of the project, namely user-management. The next post will discuss the latter part dealing with the shortening and expansion of links.
 
@@ -215,4 +215,4 @@ Here are some of the improvements that can be introduced to the **user managemen
 - **Change password:** The app currently does not allow a user to modify an existing password. This may be allowed as an additional feature.
 - **Forgot password:** The app does not allow users to reset their passwords, if they forget their existing passwords. This may be enabled as a future improvement, by letting users to type-in previous passwords or by mailing users unique links to reset their passwords.
 
-*In the next part of this series, I will discuss the second part of the app which deals with the process of shortening of links.*
+*In the [next part of this series](/2021/12/08/storing-passwords-securely.html), I discuss how passwords are stored in Twirl. In the [final part](/2021/12/20/twirl-link-shortening.html), I discuss the how short links are genered by Twirl.*
