@@ -7,9 +7,7 @@ body {
         max-width: $content-width;
         font-family: $base-font-family;
         margin: 0 auto;
-        line-height: $base-line-height;
         font-size: $base-font-size;
-        text-align: justify;
         color: $text-color;
         padding: 2em 1em;
         text-rendering: optimizeLegibility;
@@ -23,20 +21,12 @@ body {
 
     h1,h2,h3,h4,h5,h6 {
          font-family: $heading-font-family;
-         font-weight: bold;
-         line-height: 1.8;
-         margin: 0;
+         margin-top: 1em;
+         margin-bottom: 0.25em;
          code, pre  {
             font-size: inherit;
             font-family: monospace;
         }
-    }
-    h1{
-        font-size: 1.5em;
-    }
-    
-    h2{
-        font-size: 40px;
     }
 
 
@@ -132,7 +122,7 @@ blockquote {
 }
 
 .headline, .post-headline {
-    font-size: 3em;
+    font-size: 2em;
     margin-bottom: 0.5em;
 
         @include media-query($on-palm) {
@@ -169,7 +159,7 @@ blockquote {
     vertical-align: middle;
     font-family: 'Cinzel Decorative', cursive;
     font-weight: normal;
-    font-size: 30px;
+    font-size: 1.25em;
     padding: 10px;
 }
 
@@ -293,4 +283,10 @@ footer {
 .postdate {
    font-style: italic;
     font-size: smaller;
+}
+
+@media screen and (min-width: 600px) {
+p {
+    text-align: justify;
+}
 }

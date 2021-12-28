@@ -4,7 +4,7 @@ layout: default
 
 
 <div class="article-list">
-  <h2>Projects</h2>
+  <h1 class="headline">Projects</h1>
   {% for post in site.posts %}
   {% if post.tags contains 'project' %}
   <h3>
@@ -15,7 +15,7 @@ layout: default
   {% endif %} 
   {% endfor %}
   
-  <h2>Conceptual</h2>
+  <h1 class="headline">Conceptual</h1>
   {% for post in site.posts %}
   {% if post.tags contains 'conceptual' %}
   <h3>
@@ -26,7 +26,7 @@ layout: default
   {% endif %} 
   {% endfor %}
   
-  <h2>Programming</h2>
+  <h1 class="headline">Programming</h1>
   {% for post in site.posts %}
   {% if post.tags contains 'programming' %}
   <h3>
@@ -38,7 +38,7 @@ layout: default
   {% endfor %}
   
   
-  <h2>Personal</h2>
+  <h1 class="headline">Personal</h1>
   {% for post in site.posts %}
   {% if post.tags contains 'personal' %}
   <h3>
@@ -50,7 +50,7 @@ layout: default
   {% endfor %}
 
   
-  <h2>Others</h2>
+  <h1 class="headline">Others</h1>
   {% for post in site.posts %} 
   {% unless post.tags contains 'personal' %}
   {% unless post.tags contains 'programming' %}
