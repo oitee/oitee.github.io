@@ -28,7 +28,7 @@ Traditionally, if a third-party application needed to request a protected resour
 
 OAuth is an open standard that allows resource owners (i.e. users) to **securely** grant third-parties access to their resources stored in a server. Instead of obtaining the user’s credentials, OAuth ensures that third-party applications obtain **access tokens** from the server.
 
-An access token is a “*string denoting a [specific scope, lifetime, and other access attributes](https://datatracker.ietf.org/doc/html/rfc6749)*”. A third-party application has to first obtain an access token from an ‘authorization server’, after the resource owner provides their consent. This access token can be used to gain access to the specific resources of the user (subject to other restrictions, such as duration of access) that are actually needed by the third-party to provide their service. In the above example, the user will grant the mail-summarizing application  access to read their recent mails from their Gmail account (and no more), by relying on the issuance of access tokens.
+An access token is a “*string denoting a [specific scope, lifetime, and other access attributes](https://datatracker.ietf.org/doc/html/rfc6749)*”. A third-party application has to first obtain an access token from an ‘authorization server’, after the resource owner provides their consent. This access token can be used to gain access to the specific resources of the user (subject to other restrictions, such as duration of access) that are actually needed by the third-party to provide their service. In the above example, the user will grant the mail-summarizing application access to read their recent mails from their Gmail account (and no more), by relying on the issuance of access tokens.
 
 ### Key Players in OAuth
 
@@ -39,11 +39,19 @@ Before moving forward, it is important to note the important players in this **a
 - **Client**: The third-party application which wants to gain access to a protected resource(s) of the resource owner
 - **Authorization Server**: The server in charge of granting the client access tokens, after authenticating the resource owner and their authorization.
 
+### Authentication (AuthN) vs Authorization (AuthZ)
+
+**Authentication** refers to the validation the identity of a user, i.e., whether users are who they claim to be. **Authorization** refers to the process of verifying what a user is permitted to have access to, i.e., what users can and cannot access. OAuth is an authorization framework; how authentication is done is not a part of its scope. 
+
 ### Key Steps
 
 Essentially, OAuth involves four steps:
 
-- **Grant of authorization**: The client app requests authorization from the resource owner (i.e., consent to gain access to their protected resource). The client app receives an authorization grant from the resource owner. Technically, the resource owner can grant the authorization themselves. But it is more secure (and therefore, ideal) if the **grant of authorization is done via the authorization server**. When the authorization server (acting as an intermediary) obtains the consent from the resource owner, it issues the client app with an ‘authorization code’. Essentially, “*the client [directs the resource owner to an authorization server](https://datatracker.ietf.org/doc/html/rfc6749), which in turn directs the resource owner back to the client with the authorization code*”. Before redirecting the resource owner back to the client, the authorization server does the crucial task of authenticating the resource owner and seeking their consent.
+- **Grant of authorization**: The client app requests authorization from the resource owner (i.e., consent to gain access to their protected resource). The client app receives an authorization grant from the resource owner. Technically, the resource owner can grant the authorization themselves. But it is more secure (and therefore, ideal) if the **grant of authorization is done via the authorization server**. However, note that, the process of how the authroization server authenticates the resource owner (to generate the authorization grant) is outside the scope of OAuth framework. To quote the RFC:
+
+> The authorization server MUST first verify the identity of the resource owner.  The way in which the authorization server authenticates the resource owner (e.g., username and password login, session cookies) is beyond the scope of this specification.
+
+ When the authorization server (acting as an intermediary) obtains the consent from the resource owner, it issues the client app with an ‘authorization code’. Essentially, “*the client [directs the resource owner to an authorization server](https://datatracker.ietf.org/doc/html/rfc6749), which in turn directs the resource owner back to the client with the authorization code*”. Before redirecting the resource owner back to the client, the authorization server does the crucial task of authenticating the resource owner and seeking their consent.
 
 <p align="center">
 <img src="/assets/images/oAuth_1.png" alt="Key Steps(1)" width="80%"/>
