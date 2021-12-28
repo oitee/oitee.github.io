@@ -285,3 +285,13 @@ p {
     text-align: justify;
 }
 }
+/* To wrap text around make a circular image (used in the About Me page)
+source: http://thenewcode.com/916/Wrapping-Text-Around-Circular-Images-With-CSS-Shapes
+*/
+.curve { 
+	width: 25%;
+	height: auto;
+	float: left;
+	margin-right:2rem; 
+    border-radius: 50%;
+}
