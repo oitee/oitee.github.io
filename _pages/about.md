@@ -9,19 +9,11 @@ published: true
 
 <h1 align="center"> About</h1>
 
-<br>
-
 Hi, I am **Oitihjya Sen**. I am a qualified lawyer who is learning to code. 
-
-<br>
 
 I am attending the Winter '22 batch of the [**Recurse Center**](https://www.recurse.com/), New York.
 
-<br>
-
 I have previously worked as a [**Research Fellow**](https://vidhilegalpolicy.in/team/oitihjya-sen/) at India’s [leading legal think tank](https://vidhilegalpolicy.in/) (2019-21), where I contributed towards [modernizing India’s bankruptcy legal framework](https://vidhilegalpolicy.in/wp-content/uploads/2020/07/Report-on-Pre-Packaged-Insolvency-Resolution.pdf).
-
-<br>
 
 In the past six months, I have built **five projects**: 
 - A [per-user URL shortener](https://oteetwirl.herokuapp.com/) ([GitHub Repository](https://github.com/oitee/twirl)),
@@ -30,15 +22,9 @@ In the past six months, I have built **five projects**:
 - Implementation of [Search Relevance using BM25 algorithm](https://otee.dev/2021/11/24/search-relevance-using-bm-25.html) ([GitHub Repository](https://github.com/oitee/bm25)), and
 - This [blog](https://otee.dev/) ([GitHub Repository](https://github.com/oitee/oitee.github.io))
 
-<br>
-
 Following the **Feynman Technique**, I learn new concepts by writing about them in my own words. I have published over **35 posts** so far, documenting my understanding of various topics ranging from [OAuth framework](/2021/12/27/understanding-oauth.html), [higher-order functions](/2021/07/11/higher-order-functions.html), [JavaScript Promises](/2021/11/10/javascript-promises.html) to [cache replacement policies](/2021/08/18/cache-replacement-policy.html).
 
-<br>
-
 I love participating in spirited debates, discussing politics over Darjeeling Tea,  and listening to good old [RabindraSangeet](https://en.wikipedia.org/wiki/Rabindra_Sangeet)!
-
-<br>
 
 To contact me, drop a mail to [contact@otee.dev](mailto:contact@otee.dev)! Also, here's my [Github profile](https://github.com/oitee). 
 
