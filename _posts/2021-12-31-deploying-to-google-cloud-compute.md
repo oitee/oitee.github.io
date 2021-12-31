@@ -87,7 +87,7 @@ $ ssh -i ~/.ssh/id_ed25519 oitee.codes@1.2.3.4
 - But, if we have only one SSH key, the `-i` option may be ignored:
 
 ```bash
-$ ssh ~/.ssh/id_ed25519 oitee.codes@1.2.3.4
+$ ssh oitee.codes@1.2.3.4
 #IP address of the node is assumed to be: 1.2.3.4
 ```
 
@@ -106,10 +106,10 @@ The config file can contain the following details:
 
 ```bash
 Host calculus # An alias; this need not match the name of the VM
-HostName 1.2.3.4 # This is the public IP address of the VM
-AddKeysToAgent yes # This ensures that we do not have to type SSH passphrase everytime
-User oitee.codes # This is the user account on the VM to which we will be SSHing
-IdentityFile ~/.ssh/id_ed25519 # This is the private key
+    HostName 1.2.3.4 # This is the public IP address of the VM
+    AddKeysToAgent yes # This ensures that we do not have to type SSH passphrase everytime
+    User oitee.codes # This is the user account on the VM to which we will be SSHing
+    IdentityFile ~/.ssh/id_ed25519 # This is the private key
 ```
 
 After setting the config file, we can SSH simply by writing `calculus`
@@ -300,7 +300,7 @@ To enforce HTTPS, we should use the freely available [Certbot](https://certbot.e
 
 ## Using Systemd to Manage the Node Process
 
-The node process running in the background is subject to the VM itself running. If the VM needs to restart itself (as it will eventually), our node process will terminate and—unless we manually re-start the process—it will not resume. This will make our web-service unreliable.
+The node process running in the background can crash due to unforeseen exceptions, out-of-memory errors or some other reason like restarting of the VM. When this happens (as they will inevitably do), our node process will terminate. This will make our web-service unreliable.
 
 To solve this, we can use `systemd`. It is a “_system and service manager_” for Linux Operating Systems. Among many other things, it can ensure “[starting / stopping / restarting programs](https://nodesource.com/blog/running-your-node-js-app-with-systemd-part-1/)” on our behalf. Most importantly, it can ensure that our node process is started if the VM crashes or is restarted. This is why `systemd` is known as an ‘init system’, whose main purpose is “_to initialize the components that must be [started after the Linux kernel is booted](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units#:~:text=To%20tell%20systemd%20to%20start,service)_”.
 
@@ -401,9 +401,11 @@ After completing all the steps above, it is easy to appreciate the difference wh
 
 - A lot of the heavy lifting for deploying the code is managed behind-the-scenes by the PaaS (i.e., Heroku).
 - However, we are giving up the ability to control the system, when we use PaaS. For example, we might want to use one hardware for running multiple applications (to have better cost efficiency).
-- IaaS needs to be set up only once, after which it becomes as maleable as any linux machine, which means that the languages and run-times supported will not be limited
+- IaaS needs to be set up only once, after which it becomes as maleable as any linux machine, which means that the languages and run-times supported will not be limited.
 
-### References:
+`octopus`—deployed using GCE—can be accessed here: [https://octopus.otee.dev](https://octopus.otee.dev)
+
+### References
 
 - [https://www.redhat.com/en/topics/cloud-computing/iaas-vs-paas-vs-saas](https://www.redhat.com/en/topics/cloud-computing/iaas-vs-paas-vs-saas)
 - [https://cloud.google.com/free/docs/gcp-free-tier/#compute](https://cloud.google.com/free/docs/gcp-free-tier/#compute)
