@@ -24,7 +24,7 @@ The only unifying quality among Recursers is that everyone wants to get dramatic
 
 ### Social Rules
 
-Perhaps the most interesting part of Day 1 involved David along with Rachel Vincent Petacat and Mai Schwartz, explaining and enacting the four light social rules that everyone should follow at RC: 
+Perhaps the most interesting part of Day 1 involved David along with Rachel Vincent Petacat and Mai Schwartz, explaining and enacting the four light-weight social rules that everyone should follow at RC: 
 - **No feigning surprise**: We should not act surprised if someone admits to not knowing anything, irrespective of how basic or fundamental that is. Feigning surprise only serves to prevent people from being transparent about what they know and do not know.
 - **No well-actually's**: We should not interject someone only to correct them on something that has no actual bearing on the topic at hand. It just interrupts the flow of conversation without adding any value. 
 - **No back-seat driving**: If we want to help someone out with a problem, we should engage with the problem entirely, instead of making sporadic or intermittent contributions from a distance.
@@ -42,7 +42,7 @@ On the third day, every Recurser and facilitator gave a one minute introduction 
 
 Also, Recursers who are part of the Winter 1 batch (November 1, 2021 – Februrary 11, 2022), were encouraged to share a piece of advice about their time at the retreat. Here are some common advice shared by many Recursers: find the right balance between focussing on your own projects and engaging in different events; experiment with new things; do stuff you enjoy; do not hesitate to quit projects you do not like; flailing is fine but flailing alone isn't; pair as often as you can.
 
-## Pairing Workshop
+### Pairing Workshop
 
 We had a pairing workshop on the second day. As a self-learner, I have not had much experience pairing with other programmers. So, I was very excited about this workshop. In a pairing session, one person typically chooses to be the driver and the other takes the role of the navigator. The driver is the one who actually writes the code, and focusses on completing the task at hand. It is important for the driver to talk through their steps. The navigator observes the code being typed out, shares their thoughts and nudges the driver to correct inadvertent errors (like typos). The navigator should take a big-picture view while the driver should focus on the nitty-gritty of the problem. 
 
