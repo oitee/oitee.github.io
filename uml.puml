@@ -1,0 +1,27 @@
+@startuml
+title New Twirl Architecture
+
+top to bottom direction
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(User, "User", "Someone who wants to shorten links")
+
+System_Boundary("Heroku", "Heroku") {
+  ContainerDb(Postgres, "PostgreSQL", "Stores users and short-to-long link mapping")
+  Container(Twirl, "Twirl", "HTTP Server")
+}
+
+System_Boundary("GCP", "Google Compute Engine"){
+  Container(Ngnix, "NGNIX", "Reverse Proxy on twirl.otee.dev")
+}
+
+Rel(User, Ngnix, "(1) HTTP Request")
+Rel(Ngnix, User, "(2) Redirect to Twirl through browser")
+Rel(User, Twirl, "(3) Redirected HTTP Request")
+Rel(Twirl, Postgres, "(4) SQL Query")
+
+
+@enduml
