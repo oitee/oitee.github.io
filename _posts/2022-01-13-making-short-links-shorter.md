@@ -31,7 +31,7 @@ There are, largely, three ways to go about this:
 
 So, our preferred approach is the second approach:
 
-<img src="/assets/images/new_twirl_architecture.png" border="1px">
+<img src="/assets/images/new_twirl_architecture.png" border="1px" width="80%">
 
 _The above C4 diagram is generated using_ [_this_](https://gist.github.com/oitee/725732646af54024d4bc242608e1cf4e)
 
