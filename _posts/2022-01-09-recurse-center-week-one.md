@@ -9,7 +9,7 @@ A short post on my first week at the Recurse Center.
 
 ### Virtual RC
 
-Despite the occassional Zoom fatigue and my groggy eyes, the first week was a lot of fun. 
+Despite the occasional Zoom fatigue and my groggy eyes, the first week was a lot of fun. 
 
 It began with an introductory session where one of the facilitators of RC gave a quick tour of how Virtual RC works. [Virtual RC](https://www.recurse.com/virtual-rc) is a social place, which gives a snapshot of where each Recurser is currently situated: their virtual desk (indicating they are not attending any meeting), or a meeting with one or more Recursers or facilitators in any of the many Zoom rooms. It gives a real-time view of where your fellow Recursers are currently at, and, if you find other Recursers attending a specific Zoom room, you can always check out the event taking place in that room and decide whether you want to enter it. It is aimed at "facilitating the kind of [serendipitous, synchronous, and ephemeral interactions](https://www.recurse.com/virtual-rc)" that would take place naturally if the retreat was not taking place virtually.
 
@@ -36,11 +36,11 @@ It is expected that we will sometimes end up to breaking some of these rules, an
 
 We had two meet-and-greet sessions during the first week. We were randomly assigned Zoom breakout rooms in groups of 2, 3 and 4, where we got a chance to say hi and interact with fellow Recursers. In addition to the meet-and-greets, there is a coffee-chat bot, which, should you opt-in, randomly matches you with your fellow Recursers, for a quick coffee-chat. 
 
-### Introuctions to Fellow Recursers
+### Introductions to Fellow Recursers
 
 On the third day, every Recurser and facilitator gave a one minute introduction of themselves. We mentioned our name, where we come from, our preferred pronouns and what we want to do during our time at the Recurse Center. The **diversity of the cohort really showed during this session**. Recursers' interests varied from wanting to learn full-stack development, deep-dive in multi-player game development to wanting to build programs that can do magic tricks, and explore the fundamentals of computer systems!  
 
-Also, Recursers who are part of the Winter 1 batch (November 1, 2021 – Februrary 11, 2022), were encouraged to share a piece of advice about their time at the retreat. Here are some common advice shared by many Recursers: find the right balance between focussing on your own projects and engaging in different events; experiment with new things; do stuff you enjoy; do not hesitate to quit projects you do not like; flailing is fine but flailing alone isn't; pair as often as you can.
+Also, Recursers who are part of the Winter 1 batch (November 1, 2021 – February 11, 2022), were encouraged to share a piece of advice about their time at the retreat. Here are some common advice shared by many Recursers: find the right balance between focusing on your own projects and engaging in different events; experiment with new things; do stuff you enjoy; do not hesitate to quit projects you do not like; flailing is fine but flailing alone isn't; pair as often as you can.
 
 ### Pairing Workshop
 

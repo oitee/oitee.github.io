@@ -15,7 +15,7 @@ System_Boundary("Heroku", "Heroku") {
 }
 
 System_Boundary("GCP", "Google Compute Engine"){
-  Container(Ngnix, "NGNIX", "Reverse Proxy on twirl.otee.dev")
+  Container(Ngnix, "NGINX", "Reverse Proxy on twirl.otee.dev")
 }
 
 Rel(User, Ngnix, "(1) HTTP Request")
