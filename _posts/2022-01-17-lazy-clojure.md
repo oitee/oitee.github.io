@@ -101,8 +101,8 @@ First,  we write a function which returns `true` if a number is prime
 Let us now define an infinite sequence of prime numbers:
 
 ```clojure
-(def inifite-primes
-  (filter is-prime? (range)))
+(def infinite-primes
+  (filter is-prime? (drop 2 (range))))
 ```
 
 This `infinite-primes` var is doing a `filter` operation on an infinite sequence of numbers. Because `filter` and `range` both produce lazy sequences, this will not halt our program. In fact, this is the power of lazy sequences, that we can compute as many number of prime numbers, as we need **when we need it** without having to know apriori how many we may need. 
@@ -110,13 +110,15 @@ This `infinite-primes` var is doing a `filter` operation on an infinite sequence
 Thus, all of the following generates prime number sequences of varying lengths:
 
 ```bash
-butterfly.core=> (take 5 inifite-primes)
-(0 1 2 3 5)
-butterfly.core=> (take 10 inifite-primes)
-(0 1 2 3 5 7 11 13 17 19)
-butterfly.core=> (take 100 inifite-primes)
-(0 1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499 503 509 521)
+user=> (take 5 infinite-primes)
+(2 3 5 7 11)
+user=> (take 10 infinite-primes)
+(2 3 5 7 11 13 17 19 23 29)
+user=> (take 100 infinite-primes)
+(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499 503 509 521 523 541)
+
 ```
+
 
 ## Constructing a Lazy Sequence from Scratch 🧙🏼
 
@@ -200,4 +202,4 @@ user=> (cons 1 (range))
 
 In the book ['Who Moved My Cheese'](https://www.amazon.in/s?k=who+moved+my+cheese&i=stripbooks&ref=nb_sb_noss), the author says that the lazy mouse ultimately loses out on life because when the going gets tough, the hard-working mouse (eager mouse) finds a solution and the lazy one, out of sheer laziness, perishes. 
 
-However, in a modern-day language like Clojure, a lazy sequence can prove to be very effecient because some problems, like the prime numbers sequence, by definition, is infinite. If we built a web-page that displayed a paginated result of prime numbers, any language that did not implement a lazy sequence of prime numbers, would have to re-evaluate all the prime numbers for every page. This means that to generate the 500th prime number, we would have to generate 499 prime numbers and then the 500th one. Consequently, to generate the 501st prime number, we would have to re-generate the first 500 prime numbers all over again (as seen in the `eager-primes` example above). This in Clojure would not be required because we maintain only one sequence of prime numbers that are realised as required and no re-computaton would be necessary. 
+However, in a modern-day language like Clojure, a lazy sequence can prove to be very effecient because some problems, like the prime numbers sequence, by definition, is infinite. If we built a web-page that displayed a   paginated result of prime numbers, any language that did not implement a lazy sequence of prime numbers, would have to re-evaluate all the prime numbers for every page. This means that to generate the 500th prime number, we would have to generate 499 prime numbers and then the 500th one. Consequently, to generate the 501st prime number, we would have to re-generate the first 500 prime numbers all over again (as seen in the `eager-primes` example above). This in Clojure would not be required because we maintain only one sequence of prime numbers that are realised as required and no re-computaton would be necessary. 
