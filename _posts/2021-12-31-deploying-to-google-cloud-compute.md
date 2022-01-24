@@ -235,16 +235,16 @@ $ systemctl status nginx
 ```
 <img src="/assets/images/gcp_vm_6.png" width="100%"/>
 
-Once installed, `Ngnix` will run on port 80; we can verify this by going to the IP address
+Once installed, `Nginx` will run on port 80; we can verify this by going to the IP address
 
 <img src="/assets/images/gcp_vm_7.png" width="100%" border="1px"/>
 
-Next, we need to redirect traffic from port 80 to an internal port, namely port 4000. But for this, we need to decide a filtering logic. Given that, we have a DNS entry for [`octopus.otee.dev`](http://octopus.otee.dev), any request that comes to the VM's IP address on port 80, with this HTTP host header, `Ngnix` should redirect it to port 4000.
+Next, we need to redirect traffic from port 80 to an internal port, namely port 4000. But for this, we need to decide a filtering logic. Given that, we have a DNS entry for [`octopus.otee.dev`](http://octopus.otee.dev), any request that comes to the VM's IP address on port 80, with this HTTP host header, `Nginx` should redirect it to port 4000.
 
-In Ngnix, site configurations are kept in two directories:
+In Nginx, site configurations are kept in two directories:
 
 - `/etc/nginx/sites-available`: keeps all the site configurations but may not be enabled. Here, we will create a file for `octopus.otee.dev`
-- `/etc/nginx/sites-enabled`: a subset of the sites available, to which Ngnix applies. Basically, these are symbolic links to the availale sites
+- `/etc/nginx/sites-enabled`: a subset of the sites available, to which Nginx applies. Basically, these are symbolic links to the availale sites
 
 First, we should create a configuration file for `octopus.otee.dev` in the `/etc/nginx/sites-available` directory (by using `sudo nano /etc/nginx/sites-available/octopus.otee.dev`):
 
@@ -261,7 +261,7 @@ server {
 
 We should mention the `Host` header field (i.e., the domain of our application) against the `server_name` field, to ensure that all requests made to the application's domain are re-directed by Nginx. 
 
-We can configure Ngnix, to have requests sent to a certain path(s) to be re-directed. Because we want all requests sent to our application to be redirected, no specific route has been specified against the `location` field. 
+We can configure Nginx, to have requests sent to a certain path(s) to be re-directed. Because we want all requests sent to our application to be redirected, no specific route has been specified against the `location` field. 
 
 The location of the server of our application should be specified against the `proxy_pass` field; this can be an actual IP address or carry a domain name. In the present case, the the port 4000 of the [localhost](http://localhost) of the VM as been specified against the `proxy_pass` field.([source](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/))
 
