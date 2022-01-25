@@ -2,6 +2,7 @@
 layout: post
 title: "My First Clojure Backend Using Ring, Jetty and Compojure"
 tags: project
+image: /assets/images/clojure_ring_vs_node_express.png
 ---
 
 In this post I discuss how I built my first web-app, RemindMe, using Clojure! 
