@@ -5,7 +5,7 @@ tags: project
 image: /assets/images/remind_me.png
 ---
 
-In this post I discuss how I built my first web-app, RemindMe, using Clojure! The app is deployed here: [https://remind.otee.dev/](https://remind.otee.dev/)
+In this post I discuss how I built my first web-app, RemindMe, using Clojure! The app is deployed here: [https://remind.otee.dev](https://remind.otee.dev/)
 
 ## Project Scope
 
@@ -36,7 +36,7 @@ Here’s a demo of the **RemindMe**
 
 ## Goal
 
-The primary goal is to learn how to build and deploy a project using Clojure. But before embarking on this journey, **I built an identical app using Node.js and the Express framework**. This was helpful, as I did not have to spend much time focusing on the core business logic of the app and its front-end, while working with Clojure and the Ring framework. The Node.js version of the application is hosted on this GitHub Repository: [https://github.com/oitee/remind-me](https://github.com/oitee/remind-me)
+The primary goal is to learn how to build and deploy a project using Clojure. But before embarking on this journey, **I first built an identical app using Node.js and the Express framework**. This was helpful, as I did not have to spend much time focusing on the core business logic of the app and its front-end, while working with Clojure and the Ring framework. The Node.js version of the application is hosted on this GitHub Repository: [https://github.com/oitee/remind-me](https://github.com/oitee/remind-me)
 
 Thus, the goal of this project is to **re-implement the backend of RemindMe, using Clojure, and the Ring framework**. This project is hosted on a separate repository, called [aspire](https://github.com/oitee/aspire).
 
