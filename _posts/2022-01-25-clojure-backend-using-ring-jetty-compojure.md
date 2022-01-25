@@ -5,7 +5,7 @@ tags: project
 image: /assets/images/remind_me.png
 ---
 
-In this post I discuss how I built my first web-app, RemindMe, using Clojure! 
+In this post I discuss how I built my first web-app, RemindMe, using Clojure! The app is deployed here: [https://remind.otee.dev/](https://remind.otee.dev/)
 
 ## Project Scope
 
