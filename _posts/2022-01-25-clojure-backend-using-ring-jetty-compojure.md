@@ -503,7 +503,7 @@ How does Java source code get complied?
 - Once a program is converted into Java Byte Code, it can be executed by the Java Virtual Machine, which is the runtime environment for Java ([Source](https://en.wikibooks.org/wiki/Java_Programming/Byte_Code))
 - The Java Byte Code gets stored in class files; a Java ARchive file, also called JAR, can store a collection of class files ([source](https://www.ibm.com/docs/en/i/7.4?topic=java-platform))
 
-`clojure.jar` is a specific JAR file that is executed by the JVM and this program is used to compile Clojure source code.  `clojure.jar` compiles Clojure code into a specific JAR which can be executed by the JVM.
+Clojure source code gets converted to a specific JAR which can be executed by the JVM.
 
 As our project is built using Leiningen, we can use `lein jar` to create the JAR file of our project. This file will be stored in the `target` directory of our project. Instead of simply using `lein jar`, we can use `lein uberjar`, which will create a JAR file containing the source code of our project, **along with all its dependencies.** A uberjar is a “a [single standalone executable jar](https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md#what-to-do-with-it) file”, which makes it easier to deploy. Once a uberjar is prepared, we can run it by simply using `java -jar` command. Optionally, we can use `lein clean` to clean our `target` directory. To run multiple commands successively, we can use `lein do`. So, here is how we first clean our `target` directory and then compile our project into a single JAR file:
 
@@ -527,12 +527,12 @@ Created /home/otee/projects/aspire/target/uberjar/aspire-0.1.0-SNAPSHOT-standalo
 In order to run the project from a JAR, we need to ensure that we are not reading any files from the local file system. In the present project, all the non-Clojure files are read from the classpath. In the case of `data.txt`, which hosts the JSON data-set, we cannot directly use the file-path while slurping it. Instead, we have to use the `resource` method to [read file from the classpath](https://clojuredocs.org/clojure.java.io/resource) instead:
 
 ```bash
-(slurp (clojure.java.io/resource "data.txt")
+(slurp (clojure.java.io/resource "data.txt"))
 ```
 
 #### Deploying the uberjar to GCP VM
 
-Now that we have our JAR file, we need to send it across to our VM on GCP (alias `calculus`). We can do this by using the `rsync` command, which enables the transfer of files over SSH. Interestingly, it [synchronises the data being transferred](https://phoenixnap.com/kb/how-to-rsync-over-ssh) between the different machines: ensuring that only those files are transferred which are new or updated.
+Now that we have our JAR file, we need to send it across to our VM on GCP (alias `calculus`). We can do this by using the `rsync` command, which enables the transfer of files over SSH. Interestingly, it [synchronizes the data being transferred](https://phoenixnap.com/kb/how-to-rsync-over-ssh) between the different machines: ensuring that only those files are transferred which are new or updated.
 
 ```bash
 rsync /home/otee/projects/aspire/target/uberjar/aspire-0.1.0-SNAPSHOT-standalone.jar calculus:/home/oitee.codes/projects
@@ -544,7 +544,7 @@ Once the JAR is deployed, we can run it on the VM using:
 java -jar -Xmx32m /home/oitee.codes/projects/aspire-0.1.0-SNAPSHOT-standalone.jar
 ```
 
-The `-Xmx` flag is used to specify the maximum memory allocation for running a Java program. When we use `-Xmx32m`, we restrict the total memory allocation to 32 MB. 
+The `-Xmx` flag is used to specify the maximum heap memory allocation for running a Java program. When we use `-Xmx32m`, we restrict the memory allocation to 32 MB. 
 
 ### Registering with systemd
 
