@@ -10,7 +10,7 @@ This post is about my third week at the [Recurse Center](https://www.recurse.com
 
 ## Functional Programming and Clojure
 
-During this week, I continued reading Clojure for the Brave and True, and completed the next two chapters ([Clojure Alchemy: Reading, Evaluation, and Macros](https://www.braveclojure.com/read-and-eval/), and [Writing Macros](https://www.braveclojure.com/writing-macros/)). Reading about how Clojure syntax is read and evaluated was very interesting! It reminded me of my first project, [Crisp: a simple Lisp interpretor](https://github.com/oitee/crisp).
+During this week, I continued reading Clojure for the Brave and True, and completed the next two chapters ([Clojure Alchemy: Reading, Evaluation, and Macros](https://www.braveclojure.com/read-and-eval/), and [Writing Macros](https://www.braveclojure.com/writing-macros/)). Reading about how Clojure syntax is read and evaluated was very interesting! It reminded me of my first project, [Crisp: a simple Lisp interpreter](https://github.com/oitee/crisp).
 
 During the previous week, while reading Brave Clojure's 4th and 5th chapters, I was briefly introduced to some of the key tenets of functional programming. I found these concepts very fascinating. This week, I spent a considerable amount of time reading about them. While I would like to write a separate post on my findings, here are some of the points I have taken on my notebook:
 - Functional programming is characterized by its use of pure functions. 
