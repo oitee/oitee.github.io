@@ -2,8 +2,8 @@
 layout: post
 title: " Kicking Around Packets: Understanding How the Internet Works"
 tags: conceptual
+image: /assets/images/network_packet_switch.png
 ---
-
 
 In this post, I try to answer the question "What is the internet and how does it really work?"
 
