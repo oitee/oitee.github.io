@@ -7,7 +7,7 @@ image: /assets/images/network_packet_switch.png
 
 In this post, I try to answer the question "What is the internet and how does it really work?"
 
-## Key actors
+## Key terms
 
 Before going into further details, here is a useful list of some of the key terms used in this article.
 
