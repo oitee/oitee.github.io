@@ -262,6 +262,8 @@ When we use the above query, our tests pass, consistently.
 
 ## References
 
-[1] Peter Bailis et al, HAT, not CAP: Towards Highly Available Transactions, [http://www.bailis.org/papers/hat-hotos2013.pdf](http://www.bailis.org/papers/hat-hotos2013.pdf).
-[2] Martin Kleppmann, Designing Data-Intensive Applications (2017), Ch. 7. 
+[1] Martin Kleppmann, Designing Data-Intensive Applications (2017), Ch. 7. 
+
+[2] Peter Bailis et al, HAT, not CAP: Towards Highly Available Transactions, [http://www.bailis.org/papers/hat-hotos2013.pdf](http://www.bailis.org/papers/hat-hotos2013.pdf).
+
 [3] Michael Melanson, Transactions: the limits of isolation, [https://www.michaelmelanson.net/posts/transactions-the-limits-of-isolation/](https://www.michaelmelanson.net/posts/transactions-the-limits-of-isolation/)
