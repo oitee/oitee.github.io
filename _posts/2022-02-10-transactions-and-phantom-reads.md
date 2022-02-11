@@ -2,7 +2,7 @@
 layout: post
 title: "Preventing Phantom Meetings Using Transactions and Serializable Isolation"
 tags: conceptual
-image: /assets/images/network_packet_switch.png
+image: /assets/images/transactions_counters.png
 ---
 
 In this post, I discuss how time-slot collisions in a meeting scheduling application can be resolved. First, I discuss the business logic of determining a 'time-slot conflict'. Second, I explain why we need transactions to prevent scheduling of concurrent conflicting meetings. Finally, I do a deep-dive on the different levels of isolation provided by database systems, to better understand why simply using transactions (with their default set-up) does not guarantee against conflicting meetings.    
