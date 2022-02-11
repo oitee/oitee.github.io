@@ -20,11 +20,9 @@ The system interacts with the user on the Command Line.
 
 Here's the GitHub Repository hosting the project: [https://github.com/oitee/meetings](https://github.com/oitee/meetings)
 
-The key design goal of this project is that the system should go from one valid state to another valid state, i.e., there should be no inconsistent state of the system even if many users are trying to make simultaneous changes.
+The system guarantees that a meeting should be permitted to be scheduled **only if** every participating user and the respective room have no time-slot conflict. Even if one entity has a conflict, the system will reject the request for setting up the meeting and prompt the user to try again.
 
-The system guarantees that a meeting should be permitted to be scheduled **only if** every participating user and the respective room have no time-slot conflict (explained below). Even if one entity has a conflict, the system will reject the request for setting up the meeting and prompt the user to try again.
-
-For the purposes of time-slot conflict-resolution, the system treats users and rooms alike. In other words, there is no distinction made between a 'user' and a 'room', when the system checks if there is a time-slot conflict.
+For the purposes of time-slot conflict-resolution, the system treats users and rooms alike. 
 
 ### Resolving Time-Slot Conflicts
 
@@ -58,9 +56,7 @@ In each of these cases, there is a time-slot conflict, i.e., at least one point 
 
 Obviously, if the parties involved in two meetings with conflicting time-slots are distinct and separate, there is no issue. The system will allow both the meetings to continue.(_Note here that when we use 'participants', we include both users and rooms_).
 
-Thus, only if there is at least one common participant between the two conflicting time-slots, do we need to be careful. Thus, at the time of scheduling each meeting, we need to check if there is any potential conflict with respect to any of the participants of the meeting. 
-
-Thus, at the time of scheduling each meeting, we should first check if, out of all the participants proposed for the meeting, there is any participant with a time-conflict. This can be done by using the following SQL query:
+Thus, only if there is at least one common participant between the two conflicting time-slots, do we need to be careful. Thus, at the time of scheduling each meeting, we need to check if there is any potential conflict with respect to any of the participants of the meeting. This can be done using the following SQL query:
 
 ```sql
  SELECT entity FROM bookings WHERE 
@@ -234,11 +230,11 @@ In the case of lost updates (involving a read-modify-write cycle), an easy fix i
 Let's summarize the different levels of isolation and the respective guarantees they provide:
 <br> <br>
 
-| Isolation Level                      | Dirty Reads and Writes | Repeatable Reads | Lost Updates               | Phantom Reads|
-|--------------------------------------|------------------------|------------------|----------------------------|--------------|
-| Read Committed                       | Not possible           | Possible         | Possible                   | Possible     |
-| Snapshot isolation / Repeatable Read | Not possible           | Not possible     | Not Possible (in Postgres) | Possible     |
-| Serializable Isolation               | Not possible           | Not possible     | Not possible               | Not Possible |
+| Isolation Level                      | Dirty Reads and Writes | Non-Repeatable Reads | Lost Updates               | Phantom Reads|
+|--------------------------------------|------------------------|----------------------|----------------------------|--------------|
+| Read Committed                       | Not possible           | Possible             | Possible                   | Possible     |
+| Snapshot isolation / Repeatable Read | Not possible           | Not possible         | Not Possible (in Postgres) | Possible     |
+| Serializable Isolation               | Not possible           | Not possible         | Not possible               | Not Possible |
 
 <br> <br>
 
