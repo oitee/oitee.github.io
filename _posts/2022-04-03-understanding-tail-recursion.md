@@ -4,7 +4,7 @@ title: "Understanding Tail Recursion"
 tags: conceptual
 image: 
 ---
-<img src="https://user-images.githubusercontent.com/85887016/152996634-f4a8cf78-7139-480a-b7a5-0a6a6d2b7108.png" width="30%">
+
 
 In this post, I try to explain how tail call optimization can be used to make recursive functions (of certain kind) more efficient. 
 
