@@ -11,11 +11,13 @@ published: true
 
 Hi, I am **Oitihjya Sen**, a lawyer-turned programmer from India. 
 
-I am currently attending the Winter '22 batch of the [**Recurse Center**](https://www.recurse.com/), New York.
+I am currently working as a **Product Engineer** at [Shuru](https://www.shuruapp.com/), an ed-tech startup focussed on upskilling India's burgeoning youth.
 
-I have previously worked as a [**Research Fellow**](https://vidhilegalpolicy.in/team/oitihjya-sen/) at India’s [leading legal think tank](https://vidhilegalpolicy.in/) (2019-21), where I contributed towards [modernizing India’s bankruptcy legal framework](https://vidhilegalpolicy.in/wp-content/uploads/2020/07/Report-on-Pre-Packaged-Insolvency-Resolution.pdf).
+Prior to joining Shuru, I attended the [**Recurse Center**](https://www.recurse.com/), New York, where I met some of the smartest and most curious programmers from across the globe.
 
-Here are some of the projects I have built so far:  
+In my erstwhile avatar as a lawyer, I worked as a [**Research Fellow**](https://vidhilegalpolicy.in/team/oitihjya-sen/) at India’s [leading legal think tank](https://vidhilegalpolicy.in/) (2019-21), where I contributed towards [modernizing India’s bankruptcy legal framework](https://vidhilegalpolicy.in/wp-content/uploads/2020/07/Report-on-Pre-Packaged-Insolvency-Resolution.pdf).
+
+Here are a few of my personal projects:  
 - A [per-user URL shortener](https://twirl.otee.dev) ([GitHub Repository](https://github.com/oitee/twirl)),
 - A [Twitter bot](https://twitter.com/cardimomT) that aggregates blog posts from RSS and Atom feeds and publishes them on Twitter ([GitHub Repository](https://github.com/oitee/cardimom)),  
 - A simple [Lisp interpreter](/2021/08/24/crisp-a-simple-lisp-interpreter.html) ([GitHub Repository](https://github.com/oitee/crisp)), 
