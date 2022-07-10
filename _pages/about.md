@@ -11,9 +11,9 @@ published: true
 
 Hi, I am **Oitihjya Sen**, a lawyer-turned programmer from India. 
 
-I am currently working as a **Product Engineer** at [Shuru](https://www.shuruapp.com/), an ed-tech startup focussed on upskilling India's burgeoning youth.
+I am currently working as a **backend engineer** at [Helpshift](https://www.helpshift.com/).
 
-Prior to joining Shuru, I attended the [**Recurse Center**](https://www.recurse.com/), New York, where I met some of the smartest and most curious programmers from across the globe.
+Prior to joining Helpshift, I attended the [**Recurse Center**](https://www.recurse.com/), New York, where I met some of the smartest and most curious programmers from across the globe.
 
 In my erstwhile avatar as a lawyer, I worked as a [**Research Fellow**](https://vidhilegalpolicy.in/team/oitihjya-sen/) at India’s [leading legal think tank](https://vidhilegalpolicy.in/) (2019-21), where I contributed towards [modernizing India’s bankruptcy legal framework](https://vidhilegalpolicy.in/wp-content/uploads/2020/07/Report-on-Pre-Packaged-Insolvency-Resolution.pdf).
 
