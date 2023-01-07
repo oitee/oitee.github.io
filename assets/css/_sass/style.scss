@@ -180,6 +180,24 @@ blockquote {
     font-weight: bold;
     
 }
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:2px solid #ecececfa;
+    padding: 5px;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
+
+th{
+    border:2px solid #ecececfa;
+    padding: 5px;
+}
+
+td{
+    border:1px solid #ecececfa;
+    padding: 5px;
+}
 
 /* Home Button */
 
