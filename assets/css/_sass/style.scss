@@ -252,20 +252,34 @@ td{
 #markdown-toc::before {
     content: "Contents";
     font-weight: bold;
+    
 }
 
 
-// Using numbers instead of bullets for listing
-#markdown-toc ul {
-    list-style: decimal;
+#markdown-toc li a{
+    text-decoration: none;
+
 }
 
 #markdown-toc {
-    border: 1px solid $brand-color;
+    border: 0.5px solid $brand-color;
     padding: 1.5em;
-    list-style: decimal;
-    display: inline-block;
+    // display: inline-block;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 18px;
+    
 }
+
+#toc li.collapsed, #toc li.expanded { 
+    list-style-position: inside; background-color: #DDDDDD; 
+    margin: 0.5em 0 0.3em 0; padding: 0.1em 0 0.1em 0.5em;}
+   
+   #toc li.collapsed { list-style-image: url(plus.gif); }
+   #toc li.expanded { 
+    list-style-image: url(minus.gif); margin-bottom: 0; }
+   
+   #toctop { margin-left: 0; padding-left: 0; }
 
 /* Theme switch button */
 .theme {
