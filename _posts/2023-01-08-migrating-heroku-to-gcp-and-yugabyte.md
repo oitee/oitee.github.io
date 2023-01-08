@@ -2,7 +2,7 @@
 layout: post
 title: "Transitioning from Heroku Free Tier to GCP + YugabyteDB"
 tags: project
-image:
+image: /assets/images/heroku_to_gcp_and_yugabyte.png
 ---
 
 This post captures the list of steps I followed to migrate a HTTP service from a Heroku dyno to a Google Cloud Platform instance powered by YugabyteDB cluster as the database.
