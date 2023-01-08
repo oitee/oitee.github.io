@@ -16,6 +16,9 @@ To deploy [Twirl](https://twirl.otee.dev/), my URL shortening service, I was usi
 
 Since I have an [existing setup](https://otee.dev/2021/12/31/deploying-to-google-cloud-compute.html) on Google Cloud Platform (GCP), I decided to migrate my setup to my GCP instance. Additionally, I chose to use YugabyteDB instead of PostgreSQL as my database.
 
+<a href="/assets/images/heroku_to_gcp_and_yugabyte.png">
+    <img src="/assets/images/heroku_to_gcp_and_yugabyte.png" border="1px" width="100%" text-align="center">
+</a>
 
 Here are the steps I followed to migrate out of Heroku, for my URL shortening service: [twirl.otee.dev](https://twirl.otee.dev/)
 
