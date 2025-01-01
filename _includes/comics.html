@@ -46,6 +46,39 @@
             <img src="/assets/images/comics_pg3.jpg" alt="Panel 3"> 
         </div>
         </div>
+        <style>
+            .top-button {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 50px;
+              height: 50px;
+              background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: white;
+              cursor: pointer;
+              opacity: 0.5; /* Initial opacity */
+              transition: opacity 0.3s ease; /* Smooth transition on hover */
+            }
 
+            .top-button:hover {
+              opacity: 1; /* Full opacity on hover */
+            }
+
+            .arrow-up {
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 15px solid white;
+            } 
+          </style>
+          
+          <a href="#" class="top-button">
+            <span class="arrow-up"></span>
+          </a>
 </body>
 </html>
