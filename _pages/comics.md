@@ -1,7 +1,7 @@
 ---
 title:
 layout: posts
-permalink: /comics/
+permalink: /when-otee-met-tutu/
 no-header-footer: true
 ---
 {% include comics.html %}
