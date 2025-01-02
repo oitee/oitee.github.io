@@ -4,4 +4,4 @@ layout: posts
 permalink: /when-otee-met-tutu/
 no-header-footer: true
 ---
-{% include comics.html %}
+{% include comic_book_panels.html %}
