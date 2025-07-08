@@ -110,8 +110,8 @@ ENTRYPOINT ["java","-Xmx128m","-jar","swipe.jar","--server.port=3001"]
 services:
   app:
     # ... other configs
-    mem_limit: 128m
-    mem_reservation: 256m
+    mem_limit: 256m
+    mem_reservation: 128m
   postgres:
     # ... other configs
     mem_limit: 256m
@@ -132,5 +132,5 @@ This incident was a stark reminder that our work doesn't end with writing code. 
 
 It brought to light the importance of solid software engineering fundamentals, like resource management and proactive monitoring.
 
-But perhaps the most important lesson was in the incident response itself. In the heat of the moment, the priority should always be to restore service first - diagnosing the root case can be done after things are up and running.
+But perhaps the most important lesson was in the incident response itself. In the heat of the moment, the priority should always be to restore service first - diagnosing the root case can be done after services are restored.
 
