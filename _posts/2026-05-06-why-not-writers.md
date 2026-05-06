@@ -2,13 +2,16 @@
 layout: post
 title: Don't move back to the Writers'
 tags: personal
+image: /assets/images/writers_building.webp
 ---
 
 The reported plan of the new BJP government in West Bengal to shift the state secretariat [back to the Writers' Building](https://www.telegraphindia.com/west-bengal/kolkata/bjp-eyes-return-to-writers-buildings-new-chief-minister-to-take-final-call-prnt/cid/2159221) in BBD Bagh, from Nabanna, may be presented as a pragmatic step and a return to heritage. But it is actually a failure of imagination.
 
 #### What the building was meant for
 
-The Writers' Building was built in 1777 by Thomas Lyon, on behalf of the British East India Company. It was Calcutta's first three-storeyed building — a 150-metre Greco-Roman structure designed to project authority. It stood as a grand symbol of who held power, who dispensed it, and who was expected to receive it in silence. The building sits at the heart of what was then called the White Town, deliberately separated from the Black Town where the native population lived. It was not built for Indians. It was built to administer them.
+The Writers' Building was built in 1777 by Thomas Lyon, on behalf of the British East India Company. It was Calcutta's first three-storeyed building — a 150-metre Greco-Roman structure designed to project authority.
+
+It stood as a grand symbol of who held power, who dispensed it, and who was expected to receive it in silence. The building sits at the heart of what was then called the White Town, deliberately separated from the Black Town where the native population lived. It was not built for Indians. It was built to administer them.
 
 <a href="/assets/images/writers_building.webp">
     <img src="/assets/images/writers_building.webp" width="50%">
@@ -33,6 +36,7 @@ If the new government genuinely wants to signal a break from the past, the symbo
 #### Colonial Mindset
 
 The BJP has made much of moving away from the [colonial hangover in Indian governance](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2227768&reg=3&lang=2). The Central Vista project was explicitly framed as a break from Lutyens' Delhi, from the North and South Blocks that the British built to administer their empire. The logic, as articulated by the government, was that independent India should govern itself from spaces it built for itself, not from spaces built to serve colonial masters.
+
 The Writers' Building was built to serve colonial masters. If the BJP truly believes in *Viksit Bharat* — a developed India free of colonial baggage — it should start its new innings in Kolkata by not returning to a building commissioned by the British East India Company.
 
 #### A new Secretariat for New Bengal
